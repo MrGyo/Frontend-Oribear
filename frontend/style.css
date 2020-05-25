@@ -22,7 +22,7 @@ h2 {
   text-align: center;
 }
 
-p {
+.test {
   color: white;
   font-family: "Lobster", cursive;
   font-size: 2.5em;
@@ -47,8 +47,3 @@ p {
   border-bottom: 3px solid white;
 }
 
-.fab {
-  color: white;
-}
-
-/*# sourceMappingURL=style.css.map */
