@@ -1,0 +1,84 @@
+body {
+  background: #d4b9a2;
+}
+
+header {
+  background-image: url(../images/wall_4.jpg);
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+  font-family: "Lobster", cursive;
+  font-size: 9em;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: "Lobster", cursive;
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 10%;
+  text-align: center;
+}
+
+.test {
+  color: white;
+  font-family: "Lobster", cursive;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.presentation {
+  margin-top: 25%;
+}
+
+.products_list {
+  margin-top: 5%;
+}
+
+.img-product {
+  width: 100%;
+  height: auto;
+}
+
+.block-0 {
+  background-color: #303030;
+  border-bottom: 3px solid white;
+}
+
+.fas {
+  color: white;
+}
+
+.fa {
+  color: white;
+}
+
+.shopping-cart {
+  color: white;
+  font-family: "Lobster", cursive;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #303030;
+  border-top: 3px solid white;
+}
+
+.join-us {
+  margin-top: 5%;
+  color: white;
+  font-family: 'Monserrat', sans-serif;
+}
+
+.copyright {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: white;
+  font-family: "Lobster", cursive;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
