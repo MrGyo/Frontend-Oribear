@@ -1,17 +1,17 @@
 class ProductManager {
 
     constructor(){
-        this.cameras = [];
+        this.teddies = [];
     }
 
-    importCameras(cameras) {
-        this.cameras = cameras;
+    importTeddies(teddies) {
+        this.teddies = teddies;
     }
 
-    selectCamera(id){
-        return cameras.find( camera => camera._id == id);
+    selectTeddy(id){
+        return teddies.find(teddy => teddy._id == id);
     }
-
+    
 }
 
 
