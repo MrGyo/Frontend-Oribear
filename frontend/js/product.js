@@ -10,7 +10,7 @@ function createArticleHtml(teddy){
 
     let colorString = "";
         for(let color of teddy.colors) {
-        colorString += '<a class="dropdown-item">' + color + '</a>'
+        colorString += '<option value="">' + color + '</option>'
         };
     
     return  '<div class="col-12 mb-4">' +
@@ -20,17 +20,16 @@ function createArticleHtml(teddy){
                         '<h5 class="card-title">' + changeName(teddy.name) + '</h5>' +
                         '<p class="card-text-1">' + newDescription(teddy.description) + '</p>' +
                         '<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '<span style="color:red;">&euro;</span></p>' +
-                        
-                        '<div class="dropdown">' +
-                            '<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                            'Choix de la couleur' +
-                            '</button>' +
-                            '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
-                                '<a class="dropdown-item">' + colorString + '</a>' +
+                        '<div class="input-group mb-3">' + 
+                            '<div class="input-group-prepend">' +
+                                '<label class="input-group-text" for="inputGroupSelect01">' + 'Option' + '</label>' +
                             '</div>' +
+                            '<select class="custom-select" id="inputGroupSelect01">' +
+                                '<option selected>' + 'Choisissez une couleur' + '</option>'+
+                                '<option value="">' + colorString + '</option>' +
+                            '</select>' +
                         '</div>' +
-
-                        '<a href="" class="btn btn-success mt-5">Ajouter au panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
+                        '<a href="" class="btn btn-success mt-1">Ajouter au panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
                     '</div>' + 
                 '</div>' +
             '</div>'; 
@@ -48,6 +47,7 @@ function GetParams (url) {
 	}
 	return params;
 }
+
 
 
 
