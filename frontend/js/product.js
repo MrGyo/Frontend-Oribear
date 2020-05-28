@@ -14,12 +14,12 @@ function createArticleHtml(teddy){
         };
     
     return  '<div class="col-12 mb-4">' +
-                '<div class="card" id="'+ teddy._id + '">' +
+                '<div class="card mb-5" id="'+ teddy._id + '">' +
                     '<img src="'+ teddy.imageUrl +'" class="w-100">' +
                     '<div class="card-body">' +
                         '<h5 class="card-title">' + changeName(teddy.name) + '</h5>' +
                         '<p class="card-text-1">' + newDescription(teddy.description) + '</p>' +
-                        '<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '<span style="color:red;">&euro;</span></p>' +
+                        '<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '&euro;</p>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
                                 '<label class="input-group-text" for="inputGroupSelect01">' + 'Option' + '</label>' +
@@ -29,7 +29,7 @@ function createArticleHtml(teddy){
                                 '<option value="">' + colorString + '</option>' +
                             '</select>' +
                         '</div>' +
-                        '<a href="" class="btn btn-success mt-1">Ajouter au panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
+                        '<a href="shoppingcart.html?id='+ teddy._id + '" class="btn btn-success mt-1">Ajouter au panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
                     '</div>' + 
                 '</div>' +
             '</div>'; 

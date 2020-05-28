@@ -1,9 +1,9 @@
 function formatPrice(price) {
     let newPrice = price / 100;
     newPrice = newPrice.toFixed(2);
-    let newPriceColor = newPrice;
-    newPriceColor = newPrice.fontcolor("red");
-    return newPriceColor.replace(".", ",");
+    //let newPriceColor = newPrice;
+    //newPriceColor = newPrice.fontcolor("red");
+    return newPrice.replace(".", ",");
 }
 
 function changeName(name) {
@@ -20,3 +20,22 @@ function newDescription (description) {
         return description;
     };
 }
+
+
+/*var mybutton = document.getElementById("bear-print");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}*/
+
