@@ -7,6 +7,12 @@ ajaxGet('http://localhost:3000/api/teddies/' + params.id, function (reponse) {
 })
 
 function createArticleHtml(teddy){
+
+    let colorString = "";
+        for(let color of teddy.colors) {
+        colorString += '<a class="dropdown-item">' + color + '</a>'
+        };
+    
     return  '<div class="col-12 mb-4">' +
                 '<div class="card" id="'+ teddy._id + '">' +
                     '<img src="'+ teddy.imageUrl +'" class="w-100">' +
@@ -14,10 +20,20 @@ function createArticleHtml(teddy){
                         '<h5 class="card-title">' + changeName(teddy.name) + '</h5>' +
                         '<p class="card-text-1">' + newDescription(teddy.description) + '</p>' +
                         '<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '<span style="color:red;">&euro;</span></p>' +
-                        '<a href="" class="btn btn-secondary">Ajouter au panier</a>' +
+                        
+                        '<div class="dropdown">' +
+                            '<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                            'Choix de la couleur' +
+                            '</button>' +
+                            '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
+                                '<a class="dropdown-item">' + colorString + '</a>' +
+                            '</div>' +
+                        '</div>' +
+
+                        '<a href="" class="btn btn-success mt-5">Ajouter au panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
                     '</div>' + 
                 '</div>' +
-            '</div>';
+            '</div>'; 
 }
 
 function GetParams (url) {
@@ -32,4 +48,6 @@ function GetParams (url) {
 	}
 	return params;
 }
+
+
 

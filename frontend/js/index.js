@@ -17,9 +17,12 @@ function createArticleHtml(teddy){
                         '<h5 class="card-title">' + changeName(teddy.name) + '</h5>' +
                         '<p class="card-text-1">' + newDescription(teddy.description) + '</p>' +
                         '<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '<span style="color:red;">&euro;</span></p>' +
-                        '<a href="html/product.html?id='+ teddy._id + '" class="btn btn-secondary">Sélectionner</a>' +
+                        '<a href="html/product.html?id='+ teddy._id + '" class="btn btn-secondary mt-3">Sélectionner</a>' +
                     '</div>' + 
                 '</div>' +
             '</div>';
 }
+
+
+
 
