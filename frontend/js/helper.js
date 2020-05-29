@@ -14,7 +14,7 @@ function changeName(name) {
 
 function newDescription (description) {
     if (description === "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.") {
-        let newDescription = "Quand le JavaScript te fait craquer, quand tu sens que tu vas manger ton clavier, ton ourson est là pour te rassurer, alors fais lui un gros calin et tout ira bien !";
+        let newDescription = "Quand le JavaScript te fait craquer, quand tu sens que tu vas manger ton clavier... fais lui un gros calin et tout ira bien !";
         return newDescription;
     } else {
         return description;
@@ -22,20 +22,5 @@ function newDescription (description) {
 }
 
 
-/*var mybutton = document.getElementById("bear-print");
 
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}*/
 

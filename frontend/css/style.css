@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #d4b9a2;
 }
@@ -7,7 +11,7 @@ a:link {
 }
 
 .block-0 {
-  background-image: url(../images/wall_t7.jpg);
+  background-image: url(../images/wall_t8.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -128,4 +132,19 @@ footer {
     margin-bottom: 5%;
   }
 
+.know-more {
+  border-radius: 100px 100px / 100px;
+  font-size: 1.2em;
+}
+
+.know-more:hover {
+  background-color: rgb(156, 11, 55);
+  border-color: rgb(156, 11, 55);
+}
+
+#hug {
+  font-weight: bold;
+  font-family: 'Monserrat', sans-serif;
+  font-style: italic;
+}
 
