@@ -11,7 +11,6 @@ class ProductManager {
     selectTeddy(id){
         return teddies.find(teddy => teddy._id == id);
     }
-    
 }
 
 

@@ -1,11 +1,22 @@
+const LABEL_VAR_LOCAL_STORAGE_3 = "contact_app_orinobear_3";
+
+let productManager = new ProductManager();
+
+var stringProducts = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE_3);
+
+/*if (stringProducts != undefined) {
+    loadLocal(stringProducts);
+}*/
+
 let params = GetParams(window.location.href);
-console.log(params);
 
 ajaxGet('http://localhost:3000/api/teddies/' + params.id, function (reponse) {
     let table  = JSON.parse(reponse);
     let container = document.getElementById("card-container");
     container.innerHTML = createArticleHtml(table);
-})
+    productManager.importTeddies(table);
+    saveLocal3();
+    });
 
 function createArticleHtml(teddy){
 
@@ -54,3 +65,23 @@ function GetParams (url) {
 	}
 	return params;
 }
+
+function saveLocal3 () {
+    let stringProducts = JSON.stringify(productManager.teddies);
+    localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_3, stringProducts);
+  }
+
+/*function loadLocal(stringproducts) {
+    let list = JSON.parse(stringProducts);
+    list.forEach(element => {
+
+    });
+}*/
+
+
+
+
+
+
+
+

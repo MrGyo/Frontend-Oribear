@@ -1,12 +1,21 @@
+//const LABEL_VAR_LOCAL_STORAGE_2 = "contact_app_orinobear_2";
+
+//let productManager = new ProductManager();
+
+//var stringProducts = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE_2);
+
+
 let params = GetParams(window.location.href);
 
 ajaxGet('http://localhost:3000/api/teddies/' + params.id, function (reponse) {
     let product  = JSON.parse(reponse);
     let container = document.getElementById("product-container");
     container.innerHTML = createArticleHtml(product);
+    //productManager.importTeddies(product);
+    //saveLocal2();
 })
 
-function createArticleHtml(teddy){
+function createArticleHtml(teddy) {
 
     let colorString = "";
         for(let color of teddy.colors) {
@@ -47,6 +56,12 @@ function GetParams (url) {
 	}
 	return params;
 }
+
+/*function saveLocal2 () {
+    let stringProducts = JSON.stringify(productManager.teddies);
+    localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_2, stringProducts);
+  }*/
+  
 
 
 
