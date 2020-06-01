@@ -10,6 +10,13 @@ a:link {
   text-decoration: none;
 }
 
+.block-1 {
+  background-color: #303030;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  /*border-bottom: 3px solid white;*/
+}
+
 .block-0 {
   background-image: url(../images/wall_t8.jpg);
   background-repeat: no-repeat;
@@ -19,33 +26,42 @@ a:link {
   height: 100vh;
 }
 
-.block-1 {
-  background-color: #303030;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  border-bottom: 3px solid white;
+h1 {
+  color: #303030;
+  font-family: "Lobster", cursive;
+  font-size: 9em;
+  font-weight: bold;
 }
 
-.block-2 {
-  /*border-top: 3px solid #303030;*/
-  background-image: url(../images/polar.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 40px 100px 0 100px;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+.know-more {
+  border-radius: 100px 100px / 100px;
+  font-size: 1.2em;
+}
+
+.know-more:hover {
+  background-color: #9c113b;
+  border-color: #9c113b;
+  
+}
+
+#hug {
+  font-weight: bold;
+  font-family: 'Monserrat', sans-serif;
+  font-style: italic;
 }
 
 .shopping-cart {
   color: white;
   font-family: "Lobster", cursive;
   font-size: 2em;
-  font-weight: bold;
-}
-
-h1 {
-  color: #303030;
-  font-family: "Lobster", cursive;
-  font-size: 9em;
   font-weight: bold;
 }
 
@@ -95,9 +111,18 @@ h2 {
   color: white;
 }
 
+.block-2 {
+  /*border-top: 3px solid #303030;*/
+  background-image: url(../images/polar.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
 footer {
   background-color: #303030;
-  border-top: 3px solid white;
+  /*border-top: 3px solid white;*/
 }
 
 .join-us {
@@ -128,14 +153,9 @@ footer {
   border: 4px solid #303030;
   border-radius: 100%;
   cursor: pointer;
-  }
-  
-  .triangle {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 40px 100px 0 100px;
-    border-color: #ffffff transparent transparent transparent;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
   }
 
   /*.half-circle {
@@ -152,23 +172,12 @@ footer {
   margin-bottom: 5%;
 }
 
-.know-more {
-  border-radius: 100px 100px / 100px;
-  font-size: 1.2em;
-}
-
-.know-more:hover {
-  background-color: #585858;
-  border-color: #585858;
-}
-
-#hug {
-  font-weight: bold;
-  font-family: 'Monserrat', sans-serif;
-  font-style: italic;
-}
-
 .news {
   margin-top: 5%;
 }
+
+.news-ban {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
 
