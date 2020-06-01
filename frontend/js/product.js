@@ -34,7 +34,10 @@ const createArticleHtml = (teddy) => {
                             '</div>' +
                             '<select class="custom-select" id="inputGroupSelect01">'+ colorString +'</select>' +
                         '</div>' +
+                        '<div class="d-flex justify-content-between">' +
                         '<a href="#" class="btn btn-success mt-1" onclick="saveToCart()">Ajouter au panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
+                        '<a href="../index.html" class="btn btn-secondary mt-1">Retour à l\'accueil<i class="fas fa-undo-alt ml-2"></i></a>' +
+                        '</div>' +
                     '</div>' + 
                 '</div>' +
             '</div>';
@@ -57,7 +60,7 @@ function GetParams(url) {
 const saveToCart = () => {
     let colorSelected = document.getElementById("inputGroupSelect01").value;
     if (colorSelected == "") {
-        Swal.fire("Oops!", "Votre teddy veut prendre des couleurs :)", "error");
+        Swal.fire("Oops!", "Votre teddy a besoin d'une couleur :)", "error");
     } else {
         Swal.fire({
             icon: 'success',
@@ -65,7 +68,7 @@ const saveToCart = () => {
             showConfirmButton: false,
             timer: 3000
           });
-          let productToGet = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? '' :  localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
+          let productToGet = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? '' : localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
           //var newProduct = {'id': product._id, 'color': colorSelected};
           product.colorSelected = colorSelected;
           let productToSave = JSON.stringify(product);

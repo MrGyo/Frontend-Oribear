@@ -1,7 +1,6 @@
-// Constante qui permet l'initialisation du local storage
-const LABEL_VAR_LOCAL_STORAGE = "contact_app_orinobear";
+let params = GetParams(window.location.href);
 
-ajaxGet('http://localhost:3000/api/teddies/', function (reponse) {
+ajaxGet('http://localhost:3000/api/teddies/' + params.id, function (reponse) {
     let table  = JSON.parse(reponse);
     let container = document.getElementById("card-container");
     container.innerHTML = createArticleHtml(table);
@@ -42,15 +41,17 @@ function createArticleHtml(teddy) {
             '</div>';
 }
 
-const loadCart = () => {
-    let productToGet = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? '' :  localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
-    //var newProduct = {'id': product._id, 'color': colorSelected};
-    product.colorSelected = colorSelected;
-    let productToSave = JSON.stringify(product);
-    localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, productToSave + productToGet);
-    //console.log(productToSave);
-    console.log(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
-
+function GetParams (url) {
+	var params = {};
+	var parser = document.createElement('a');
+	parser.href = url;
+	var query = parser.search.substring(1);
+	var vars = query.split('&');
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split('=');
+		params[pair[0]] = decodeURIComponent(pair[1]);
+	}
+	return params;
 }
 
 
