@@ -1,8 +1,10 @@
+// Constante qui permet l'initialisation du local storage
 const LABEL_VAR_LOCAL_STORAGE = "contact_app_orinobear";
 
-// Variable permettant d'appeler la fonction GetParams pour récupérer l'id dans l'adress
+// Variable permettant d'appeler la méthode GetParams pour récupérer l'id dans l'adresse URL
 let params = GetParams(window.location.href);
-// Permet de garder un pied dehors
+
+// Permet de d'utilser les infos récupérées de l'API
 let product = null;
 
 // Récupération du produit ciblé (grâce à l'ajout de l'id produit)
@@ -16,9 +18,8 @@ ajaxGet('http://localhost:3000/api/teddies/' + params.id, function (reponse) {
 const createArticleHtml = (teddy) => {
     // Ajout d'une option permettant à l'utilisateur de choisir la couleur du produit
     let colorString =  '<option selected value="">' + 'Choisissez une couleur' + '</option>';
-
         for(let color of teddy.colors) {
-        colorString += '<option value="' + color + '">' + color + '</option>'
+        colorString += '<option value="' + color + '">' + color + '</option>';
         };
     return  '<div class="col-12 mb-4">' +
                 '<div class="card mb-5" id="'+ teddy._id + '">' +
@@ -55,13 +56,22 @@ function GetParams(url) {
 
 const saveToCart = () => {
     let colorSelected = document.getElementById("inputGroupSelect01").value;
-    //console.log(colorSelected);
-    let productToGet = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? '' :  localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
-    //console.log(productToGet);
-    //var newProduct = {'id': product._id, 'color': colorSelected};
-    product.colorSelected = colorSelected;
-    let productToSave = JSON.stringify(product);
-    localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, productToSave + productToGet);
-    //console.log(productToSave);
-    console.log(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+    if (colorSelected == "") {
+        Swal.fire("Oops!", "Votre teddy veut prendre des couleurs :)", "error");
+    } else {
+        Swal.fire({
+            icon: 'success',
+            title: 'Votre teddy est dans le panier !',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          let productToGet = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? '' :  localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
+          //var newProduct = {'id': product._id, 'color': colorSelected};
+          product.colorSelected = colorSelected;
+          let productToSave = JSON.stringify(product);
+          localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, productToSave + productToGet);
+          console.log(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+    }; 
 }
+
+

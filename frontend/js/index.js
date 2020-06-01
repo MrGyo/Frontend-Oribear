@@ -1,13 +1,15 @@
-// Récupération des produits via l'api etcréation du HTML grâce à la méthode dédiée
+// Récupération des fiches produits via l'api (id, color, name, description, price)
 ajaxGet("http://localhost:3000/api/teddies", function (reponse) {
+    // Dans la variables teddies on récupère tous les teddies issus de l'api
     let teddies = JSON.parse(reponse);
+    // Pour chacun des teddies on va incrémenter les balises HTML déf
     teddies.forEach(function(teddy) {
         let container = document.getElementById("articles-container");
         container.innerHTML += createArticleHtml(teddy);
     });
 })
 
-// Création d'une méthode pour implémenter les fiches produits sur la page index.html
+// Création d'une méthode pour ajouter les fiches produits sur la page index.html
 const createArticleHtml = (teddy) => {
     return  '<div class="col-12 mb-3">' +
                 '<div class="card mb-4" id="'+ teddy._id + '">' +
@@ -22,7 +24,21 @@ const createArticleHtml = (teddy) => {
             '</div>';
 }
 
-// Ajout d'une fonction pour un scroll to top auto pour le bouton "bear-print"
+// Ajout d'une fonction qui permet d'extraire l'id de l'adresse url
+function GetParams(url) {
+	var params = {};
+	var parser = document.createElement('a');
+	parser.href = url;
+	var query = parser.search.substring(1);
+	var vars = query.split('&');
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split('=');
+		params[pair[0]] = decodeURIComponent(pair[1]);
+	}
+	return params;
+}
+
+// Ajout d'une fonction permettant un scroll to top auto pour le bouton "bear-print" en bas de page
 var mybutton = document.getElementById("bear-print");
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {

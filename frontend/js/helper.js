@@ -1,3 +1,4 @@
+// Ajout d'une fonction qui retouche le format du prix
 function formatPrice(price) {
     let newPrice = price / 100;
     newPrice = newPrice.toFixed(2);
@@ -20,6 +21,11 @@ function formatPrice(price) {
         return description;
     };
 }*/
+
+
+
+
+
 
 
 
