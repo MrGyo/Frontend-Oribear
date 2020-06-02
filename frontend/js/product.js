@@ -34,6 +34,19 @@ const createArticleHtml = (teddy) => {
                             '</div>' +
                             '<select class="custom-select" id="inputGroupSelect01">'+ colorString +'</select>' +
                         '</div>' +
+                        '<div class="input-group mb-3">' + 
+                            '<div class="input-group-prepend">' +
+                                '<label class="input-group-text" for="inputGroupSelect02">' + 'Option' + '</label>' +
+                            '</div>' +
+                            '<select  class="custom-select" id="options">' + 
+                                '<option selected value="">' + 'Choisissez une quantité' + '</option>' +
+                                '<option class="quantity" value="1">1</option>' +
+                                '<option class="quantity" value="2">2</option>' +
+                                '<option class="quantity" value="3">3</option>' +
+                                '<option class="quantity" value="4">4</option>' +
+                                '<option class="quantity" value="5">5</option>' +
+                            '</select>' +
+                        '</div>' +
                         '<div class="d-flex justify-content-between">' +
                         '<a href="#" class="btn btn-success mt-1" onclick="saveToCart()">Ajouter au panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
                         '<a href="../index.html" class="btn btn-secondary mt-1">Retour à l\'accueil<i class="fas fa-undo-alt ml-2"></i></a>' +
@@ -58,18 +71,20 @@ function GetParams(url) {
 }
 
 const saveToCart = () => {
+    let quantitySelected = document.getElementById("options").value;
+    console.log(quantitySelected);
     let colorSelected = document.getElementById("inputGroupSelect01").value;
-    if (colorSelected == "") {
-        Swal.fire("Oops!", "Votre teddy a besoin d'une couleur :)", "error");
+    if (colorSelected == "" || quantitySelected == "") {
+        Swal.fire("Oops!", "Choisissez une couleur et une quantité :)", "error");
     } else {
         Swal.fire({
             icon: 'success',
             title: 'Votre teddy est dans le panier !',
             showConfirmButton: false,
-            timer: 3000
+            timer: 3000,
           });
           let productToGet = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? '' : localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
-          //var newProduct = {'id': product._id, 'color': colorSelected};
+          //var newProduct = {'id': product._id, 'color': colorSelected, 'quantity' : quantitySelected};
           product.colorSelected = colorSelected;
           let productToSave = JSON.stringify(product);
           localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, productToSave + productToGet);
