@@ -1,0 +1,3 @@
+Ajouter Name et price à saveToCart
+Remettre certaines div en "dur" pour shoppingcart.chteumeuleu
+Virer le OK pour un timer sur popup

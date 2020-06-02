@@ -30,16 +30,16 @@ const createArticleHtml = (teddy) => {
                         '<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '&euro;</p>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
-                                '<label class="input-group-text" for="inputGroupSelect01">' + 'Option' + '</label>' +
+                                '<label class="input-group-text" style="width:100px" for="inputGroupSelect01">Option</label>' +
                             '</div>' +
                             '<select class="custom-select" id="inputGroupSelect01">'+ colorString +'</select>' +
                         '</div>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
-                                '<label class="input-group-text" for="inputGroupSelect02">' + 'Option' + '</label>' +
+                                '<label class="input-group-text" style="width:100px" for="inputGroupSelect02">Quantité</label>' +
                             '</div>' +
                             '<select  class="custom-select" id="options">' + 
-                                '<option selected value="">' + 'Choisissez une quantité' + '</option>' +
+                                //'<option selected value="">' + 'Choisissez une quantité' + '</option>' +
                                 '<option class="quantity" value="1">1</option>' +
                                 '<option class="quantity" value="2">2</option>' +
                                 '<option class="quantity" value="3">3</option>' +
@@ -72,8 +72,8 @@ function GetParams(url) {
 
 const saveToCart = () => {
     let quantitySelected = document.getElementById("options").value;
-    console.log(quantitySelected);
     let colorSelected = document.getElementById("inputGroupSelect01").value;
+
     if (colorSelected == "" || quantitySelected == "") {
         Swal.fire("Oops!", "Choisissez une couleur et une quantité :)", "error");
     } else {
@@ -82,14 +82,25 @@ const saveToCart = () => {
             title: 'Votre teddy est dans le panier !',
             showConfirmButton: false,
             timer: 3000,
-          });
-          let productToGet = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? '' : localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
-          //var newProduct = {'id': product._id, 'color': colorSelected, 'quantity' : quantitySelected};
-          product.colorSelected = colorSelected;
-          let productToSave = JSON.stringify(product);
-          localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, productToSave + productToGet);
-          console.log(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+        });
+        product.quantitySelected = quantitySelected;
+        product.colorSelected = colorSelected;
+        let productToAdd = {'id': product._id, 'color': colorSelected, 'quantity' : quantitySelected};
+        addToCart(productToAdd);
     }; 
 }
 
+function addToCart(productToAdd) {
+    let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+    console.log(cart);
+
+    let article = cart.find( element => element.id === productToAdd.id && element.color === productToAdd.color);
+    if (article !== undefined) {
+        article.quantity = parseInt(productToAdd.quantity) + parseInt(article.quantity);
+    } else {
+        cart.push(productToAdd)
+    }
+
+    localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, JSON.stringify(cart));
+}
 
