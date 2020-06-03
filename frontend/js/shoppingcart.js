@@ -1,55 +1,39 @@
-// Constante qui permet l'initialisation du local storage
+refreshBadge() 
 
-const LABEL_VAR_LOCAL_STORAGE = "contact_app_orinobear";
+let products = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
 
-let productToBuy = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? '' : localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
-console.log(productToBuy);
-let products = JSON.parse(productToBuy);
+if (products != null){
+    products = JSON.parse(products);
+}
+else {
+    products = [];
+}
 console.log(products);
+
+var totalToPay = 0
 products.forEach(function(product) {
-    let container = document.getElementById("card-container");
+        let container = document.getElementById("cart-content");
+        let totalPricePerProduct = formatPrice(product.quantity * product.price);
+        product.totalPricePerProduct = totalPricePerProduct;
         container.innerHTML += createArticleHtml(product);
+        totalToPay += parseInt(totalPricePerProduct);
     });
+    console.log(totalToPay);
 
 function createArticleHtml(product) {
-    return  '<div class="col-12 mb-4">' +
-                '<div class="col-12 mb-4">' +
-                '<table class="table table-dark">' +
-                '<thead>' +
-                    '<tr>' +
-                    '<th scope="col">id</th>' +
-                    '<th scope="col">Couleur</th>' +
-                    '<th scope="col">Quantité</th>' +
-                    '</tr>' +
-                '</thead>' +
-                '<tbody>' +
-                // uniquement bouclé ceci
-                    '<tr>' +
-                    '<td>' + product.id + '</td>' +
-                    '<td>' + product.color + '</td>' +
-                    '<td>' + product.quantity + '</td>' +
-                    '</tr>' +
-                // Fin
-                '</tbody>' +
-                '</table>' +
-            /*'<div class="row">' +
-                '<div class="col-12 d-flex justify-content-center align-items-center flex-column mb-2">' +
-                    '<a href="" class="btn btn-secondary mt-3">Vider mon panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
-                '</div>' +*/
-            '</div>';
+
+    return  '<tr>' +
+            '<td>' + product.name + '</td>' +
+            '<td>' + product.color + '</td>' +
+            '<td>' + product.quantity + '</td>' +
+            '<td class="price"><span style="color:#dc3545;">' + product.totalPricePerProduct + '&euro;</span></td>' +
+            '</tr>';
+        }
+
+function clearCart() {
+    let cartToClear = localStorage.clear(LABEL_VAR_LOCAL_STORAGE);
+    console.log(cartToClear);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

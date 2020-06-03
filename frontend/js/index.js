@@ -1,3 +1,5 @@
+refreshBadge() 
+
 // Récupération des fiches produits via l'api (id, color, name, description, price)
 ajaxGet("http://localhost:3000/api/teddies", function (reponse) {
     // Dans la variables teddies on récupère tous les teddies issus de l'api
@@ -17,7 +19,8 @@ const createArticleHtml = (teddy) => {
                     '<div class="card-body">' +
                         '<h5 class="card-title">' + teddy.name + '</h5>' +
                         '<p class="card-text-1">' + teddy.description + '</p>' +
-                        '<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '&euro;</p>' +
+                        //'<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '<span style="color:#dc3545;">&euro;</span></p>' +
+                        '<p class="card-text-2">Prix: <span style="color:#dc3545;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
                         '<a href="html/product.html?id='+ teddy._id + '" class="btn btn-secondary mt-3">Sélectionner</a>' +
                     '</div>' + 
                 '</div>' +

@@ -1,5 +1,4 @@
-// Constante qui permet l'initialisation du local storage
-const LABEL_VAR_LOCAL_STORAGE = "contact_app_orinobear";
+refreshBadge() 
 
 // Variable permettant d'appeler la méthode GetParams pour récupérer l'id dans l'adresse URL
 let params = GetParams(window.location.href);
@@ -24,10 +23,10 @@ const createArticleHtml = (teddy) => {
     return  '<div class="col-12 mb-4">' +
                 '<div class="card mb-5" id="'+ teddy._id + '">' +
                     '<img src="'+ teddy.imageUrl +'" class="w-100">' +
-                    '<div class="card-body">' +
-                        '<h5 class="card-title">' + teddy.name + '</h5>' +
+                    '<div class="card-body" id="product-details">' +
+                        '<h5 class="card-title" id="name">' + teddy.name + '</h5>' +
                         '<p class="card-text-1">' + teddy.description + '</p>' +
-                        '<p class="card-text-2">' + '<u>Prix</u>: ' + formatPrice(teddy.price) + '&euro;</p>' +
+                        '<p class="card-text-2" id="price">Prix: <span style="color:#dc3545;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
                                 '<label class="input-group-text" style="width:100px" for="inputGroupSelect01">Option</label>' +
@@ -39,7 +38,6 @@ const createArticleHtml = (teddy) => {
                                 '<label class="input-group-text" style="width:100px" for="inputGroupSelect02">Quantité</label>' +
                             '</div>' +
                             '<select  class="custom-select" id="options">' + 
-                                //'<option selected value="">' + 'Choisissez une quantité' + '</option>' +
                                 '<option class="quantity" value="1">1</option>' +
                                 '<option class="quantity" value="2">2</option>' +
                                 '<option class="quantity" value="3">3</option>' +
@@ -71,8 +69,10 @@ function GetParams(url) {
 }
 
 const saveToCart = () => {
-    let quantitySelected = document.getElementById("options").value;
     let colorSelected = document.getElementById("inputGroupSelect01").value;
+    let quantitySelected = document.getElementById("options").value;
+    let priceToString = product.price;
+    console.log(priceToString);
 
     if (colorSelected == "" || quantitySelected == "") {
         Swal.fire("Oops!", "Choisissez une couleur et une quantité :)", "error");
@@ -83,10 +83,13 @@ const saveToCart = () => {
             showConfirmButton: false,
             timer: 3000,
         });
+
         product.quantitySelected = quantitySelected;
         product.colorSelected = colorSelected;
-        let productToAdd = {'id': product._id, 'color': colorSelected, 'quantity' : quantitySelected};
+        let productToAdd = {'id': product._id, 'name': product.name, 'color': colorSelected, 'quantity' : quantitySelected, 'price' : product.price};
         addToCart(productToAdd);
+        updateBadge();
+        refreshBadge();
     }; 
 }
 
@@ -103,4 +106,15 @@ function addToCart(productToAdd) {
 
     localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, JSON.stringify(cart));
 }
+
+function updateBadge() {
+    let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+    let quantities = 0;
+    for (let product of cart) {
+        quantities += parseInt(product.quantity)
+    }
+    localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_BADGE, quantities);
+}
+
+
 
