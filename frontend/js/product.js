@@ -29,7 +29,7 @@ const createArticleHtml = (teddy) => {
                         '<p class="card-text-2" id="price">Prix: <span style="color:#dc3545;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
-                                '<label class="input-group-text" style="width:100px" for="inputGroupSelect01">Option</label>' +
+                                '<label class="input-group-text" style="width:100px" for="inputGroupSelect01">Couleur</label>' +
                             '</div>' +
                             '<select class="custom-select" id="inputGroupSelect01">'+ colorString +'</select>' +
                         '</div>' +
