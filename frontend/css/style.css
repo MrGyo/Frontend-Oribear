@@ -205,4 +205,16 @@ footer {
   font-weight: bold;
 }
 
+#total {
+  background-color: #dc3545;
+  color: white;
+  font-weight: bold;
+}
+
+#total-value {
+  background-color: #dc3545;
+  color: white;
+  font-weight: bold;
+}
+
 

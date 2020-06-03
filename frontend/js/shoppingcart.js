@@ -8,15 +8,18 @@ if (products != null){
 else {
     products = [];
 }
-console.log(products);
 
 var totalToPay = 0
+
 products.forEach(function(product) {
         let container = document.getElementById("cart-content");
         let totalPricePerProduct = formatPrice(product.quantity * product.price);
         product.totalPricePerProduct = totalPricePerProduct;
         container.innerHTML += createArticleHtml(product);
+
         totalToPay += parseInt(totalPricePerProduct);
+        let containerTotal = document.getElementById("total-value");
+        containerTotal.innerHTML = formatPriceBis(totalToPay.toFixed(2)) + '<span>&euro;</span>';
     });
     console.log(totalToPay);
 
@@ -34,6 +37,5 @@ function clearCart() {
     let cartToClear = localStorage.clear(LABEL_VAR_LOCAL_STORAGE);
     console.log(cartToClear);
 }
-
 
 

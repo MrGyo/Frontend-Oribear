@@ -9,6 +9,10 @@ function formatPrice(price) {
     return newPrice.replace(".", ",");
 }
 
+function formatPriceBis(price) {
+    return price.replace(".", ",");
+}
+
 /*function changeName(name) {
     name = name.replace("Norbert", "Serge");
     name = name.replace("Arnold", "Marcel");
