@@ -1,3 +1,4 @@
+/*-- Global --*/
 html {
   scroll-behavior: smooth;
 }
@@ -10,6 +11,77 @@ a:link {
   text-decoration: none;
 }
 
+h1 {
+  color: #303030;
+  font-family: "Lobster", cursive;
+  font-size: 9em;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: "Lobster", cursive;
+  font-size: 3em;
+  font-weight: bold;
+  margin-top: -3.5%;
+  margin-bottom: 3%;
+  text-align: center;
+}
+
+.shopping-cart {
+  color: white;
+  font-family: "Lobster", cursive;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.badge {
+  position: absolute;
+  top:5px;
+  right: 8px;
+  padding: 5px 10px;
+  font-size: 0.5em;
+}
+
+.btn {
+  border-radius: 100px 100px / 100px;
+}
+
+.fas {
+  color: white;
+}
+
+.fa {
+  color: white;
+}
+
+.join-us {
+  margin-top: 5%;
+  color: white;
+  font-family: 'Monserrat', sans-serif;
+}
+
+.copyright {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: white;
+  font-family: "Lobster", cursive;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #303030;
+}
+
+/*-- index.html --*/
+.block-0 {
+  background-image: url(../images/wall_t8.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
 .block-1 {
   background-color: #303030;
   padding-top: 1%;
@@ -17,20 +89,12 @@ a:link {
   /*border-bottom: 3px solid white;*/
 }
 
-.block-0 {
-  background-image: url(../images/wall_t8.jpg);
+.block-2 {
+  background-image: url(../images/polar.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  height: 100vh;
-}
-
-h1 {
-  color: #303030;
-  font-family: "Lobster", cursive;
-  font-size: 9em;
-  font-weight: bold;
 }
 
 .triangle {
@@ -58,22 +122,6 @@ h1 {
   font-style: italic;
 }
 
-.shopping-cart {
-  color: white;
-  font-family: "Lobster", cursive;
-  font-size: 2em;
-  font-weight: bold;
-}
-
-h2 {
-  font-family: "Lobster", cursive;
-  font-size: 3em;
-  font-weight: bold;
-  margin-top: -3.5%;
-  margin-bottom: 3%;
-  text-align: center;
-}
-
 .name {
   color: white;
   font-family: "Lobster", cursive;
@@ -89,55 +137,6 @@ h2 {
 
 .presentation {
   margin-top: 19%;
-}
-
-.products_list {
-  margin-top: 5%;
-}
-
-.card {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-
-.card-text-2 {
-  font-weight: bold;
-}
-
-.fas {
-  color: white;
-}
-
-.fa {
-  color: white;
-}
-
-.block-2 {
-  /*border-top: 3px solid #303030;*/
-  background-image: url(../images/polar.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-footer {
-  background-color: #303030;
-  /*border-top: 3px solid white;*/
-}
-
-.join-us {
-  margin-top: 5%;
-  color: white;
-  font-family: 'Monserrat', sans-serif;
-}
-
-.copyright {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  color: white;
-  font-family: "Lobster", cursive;
-  font-size: 1.5em;
-  font-weight: bold;
 }
 
 .image-bear {
@@ -158,14 +157,27 @@ footer {
   transition-timing-function: ease-out;
   }
 
-  /*.half-circle {
-    width: 150px;
-    height: 50px;
-    background-color: white;
-    border-bottom-left-radius: 110px;
-    border-bottom-right-radius: 110px;
-    border-bottom: 0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+/*-- shoppingcart.html --*/
+.products_list {
+  padding-top: 5%;
+  /*padding-bottom: 3%;*/
+}
+
+.card {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.card-text-2 {
+  font-weight: bold;
+}
+
+/*.block-cart {
+  background-image: url(../images/wall.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  border-bottom: 3px solid #303030;
 }*/
 
 .form-cart {
@@ -178,18 +190,6 @@ footer {
 
 .news-ban {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-}
-
-.badge {
-  position: absolute;
-  top:5px;
-  right: 8px;
-  padding: 5px 10px;
-  font-size: 0.5em;
-}
-
-.btn {
-  border-radius: 100px 100px / 100px;
 }
 
 .thead {
@@ -217,4 +217,27 @@ footer {
   font-weight: bold;
 }
 
+/*hr {
+  border: none;
+  border-top: 8px double #303030;
+  color: #303030;
+  overflow: visible;
+  text-align: center;
+  margin-top: 0;
+}
 
+hr:after {
+  content: url(../images/tongue3.png);
+  position: relative;
+  top: -2.5px;
+}*/
+
+/*.test-mb {
+  margin-bottom: 5%;
+}*/
+
+/*.block-form {
+  background-image: url(../images/bear_form.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}*/
