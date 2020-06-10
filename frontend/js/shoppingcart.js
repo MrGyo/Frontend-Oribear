@@ -48,10 +48,10 @@ function clearCart() {
 document.querySelector("form").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    //CHECK FORM 
+    //Contrôle du formulaire avant envoi cf. confirm.js
     if (!checkForm())
       return;
-      
+
     // Initialisation d'un tableau permettant de récupérer les id des teddies dans le local storage
     let products = [];
     let cart = JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));

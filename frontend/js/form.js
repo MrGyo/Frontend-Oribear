@@ -22,25 +22,26 @@ function checkForm(){
     }
 
     let addressControl = document.getElementById("address").value;
-    if (addressControl = "") {
+    if (addressControl == "") {
         Swal.fire("Oops", "Saisissez votre adresse ! :)", "error");
         return false;
     }
 
     let zipCodeControl = document.getElementById("zipcode").value;
     let regexZipCode = /^[0-9]*$/;
-    if (!regexZipCode.test(zipCodeControl) || zipCodeControl.lenght < 5 && zipCodeControl.lenght > 5) {
+    if (!regexZipCode.test(zipCodeControl) || zipCodeControl.length < 5 || zipCodeControl.length > 5) {
         Swal.fire("Oops", "Saisissez un code postal valide ! :)", "error");
         return false;
     }
 
     let cityControl = document.getElementById("city").value;
-    if (cityControl = "") {
+    if (cityControl == "") {
         Swal.fire("Oops", "Saisissez votre ville ! :)", "error");
         return false;
     }
     
     return true;
+    
 }
 
 
