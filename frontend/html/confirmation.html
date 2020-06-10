@@ -30,70 +30,16 @@
                 </div>
             </div>
         </header>
-        <div class="block-cart">
-            <div class="container products_list justify-content-center align-items-center">
-                <h2>Récapitulatif de votre commande</h2>
-                <div class="row" id="cart-container">
-                    <div class="col-12 mb-4">
-                        <div class="col-12 mb-4">
-                            <table class="table">
-                                <thead class="thead"> 
-                                    <tr>
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Couleur</th>
-                                    <th scope="col">Quantité</th>
-                                    <th scope="col">Prix</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="cart-table" id="cart-content">
-                                </tbody>
-                                <tr> 
-                                    <th colspan="3" id="total">Total</th>
-                                    <td id="total-value"></td>
-                                </tr>
-                            </table>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-4" id="confirm">
+                        <img src="../images/panda.jpg" class="w-100">
+                        <div class="card-body ">
+                            <p id="confirmation">Commande confirmée !</p>
+                            <div class="text-center"><a href="../index.html" class="btn btn-secondary mt-3 text-center">Retour à l'accueil</a></div>
                         </div>
                     </div>
-                </div>
-                <!---<div class="col-12 d-flex justify-content-center align-items-center flex-column">
-                <button href="" class="btn btn-danger" style="width:100%" onClick="document.getElementById('form').scrollIntoView();">Passer votre commande !</button>
-                </div>--->
-            </div>
-            <!---<div class="text-center" id="three_bears">
-                <div class="text-center"><img src="../images/bears3.png"></div>
-            </div>--->
-        </div>
-        <!---<hr class="tongue" id="tongue">--->
-        <div class="block-form pb-5" id="form">
-            <div class="container">
-                <h2 class="mt-2 mb-2">Veuillez remplir le formulaire de commande</h2>
-                <p class="text-center font-italic">(*) Champs obligatoires</p>
-                <div class="col-12">
-                    <form class="form-cart">
-                        <h3 class="mt-1">Coordonnées : </h3>
-                        <div class="form-group">
-                            <input type="lastname" class="form-control" id="lastname" aria-describedby="lastnameHelp" placeholder="Nom*">
-                        </div>
-                        <div class="form-group">
-                            <input type="firstname" class="form-control " id="firstname" aria-describedby="firstnameHelp" placeholder="Prénom*">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Adresse Email*">
-                            <small id="emailHelp" class="form-text text-muted">Votre email ne sera jamais partagé... sauf à votre teddy :)</small>
-                        </div>
-                        <h3 class="mt-4">Adresse de facturation : </h3>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="address" placeholder="Adresse*">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="zipcode" placeholder="Code Postal*">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="city" placeholder="Ville*">
-                        </div>
-                        <button type="submit" class="btn btn-danger mt-4" style="width:100%">Envoyer</button>
-                        <a href="" class="btn btn-secondary mt-4" style="width:100%" onclick="clearCart()">Vider mon panier<i class="fas fa-shopping-cart ml-2"></i></a>
-                    </form>
                 </div>
             </div>
         </div>
@@ -143,6 +89,5 @@
         <script src="../js/ajax.js"></script>
         <script src="../js/ProductManager.js"></script>
         <script src="../js/helper.js"></script>
-        <script src="../js/shoppingcart.js"></script>
     </body>
 </html>

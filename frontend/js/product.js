@@ -26,7 +26,7 @@ const createArticleHtml = (teddy) => {
                 '<div class="card mb-5" id="'+ teddy._id + '">' +
                     '<img src="'+ teddy.imageUrl +'" class="w-100">' +
                     '<div class="card-body" id="product-details">' +
-                        '<h5 class="card-title" id="name">' + changeName(teddy.name) + '</h5>' +
+                        '<h5 class="card-title" id="name">' + teddy.name + '</h5>' +
                         '<p class="card-text-1">' + newDescription(teddy.description) + '</p>' +
                         '<p class="card-text-2" id="price">Prix: <span style="color:#dc3545;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
                         '<div class="input-group mb-3">' + 
@@ -120,7 +120,7 @@ function addToCart(productToAdd) {
     localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, JSON.stringify(cart));
 }
 
-//=== Ajout d'une fonction updateBadeg qui permet de faire un setitem de la quantité dédiée au localstorage du badge ===//
+//=== Ajout d'une fonction updateBadege qui permet de faire un setitem de la quantité dédiée au localstorage du badge ===//
 function updateBadge() {
     // Initialisation du panier sur la base de ce qui se trouve au local storage
     let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));

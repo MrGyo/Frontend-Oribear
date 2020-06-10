@@ -13,11 +13,11 @@ function formatPriceBis(price) {
 }
 
 // --- Fonction qui permet de modifier certains noms ---//
-function changeName(name) {
+/*function changeName(name) {
     name = name.replace("Norbert", "Serge");
     name = name.replace("Arnold", "Marcel");
     return name;
-}
+}*/
 
 // --- Fonction qui permet de changer la description du produit ---//
 function newDescription(description) {

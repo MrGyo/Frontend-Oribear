@@ -241,3 +241,11 @@ hr:after {
   background-repeat: no-repeat;
   background-size: cover;
 }*/
+
+#confirmation {
+  font-family: "Lobster", cursive;
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+}
+
