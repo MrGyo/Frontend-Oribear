@@ -4,15 +4,7 @@ refreshBadge()
 //=== PARTIE DEDIEE A LA CONSTRUCTION DU TABLEAU RECAPITUALITF ===//
 
 //=== Initialisation d'une variable pour avoir recours au contenu du local storage ===//
-let products = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
-
-//=== Si le contenu n'est pas vide, parse des données, sinon on initialise un tableau vide ===//
-if (products != null){
-    products = JSON.parse(products);
-}
-else {
-    products = [];
-}
+let products = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
 
 //=== Par défaut le montant à payer par l'utilisateur est initialisé à 0 ===//
 var totalToPay = 0
@@ -56,6 +48,11 @@ function clearCart() {
 document.querySelector("form").addEventListener("submit", function(e) {
     e.preventDefault();
 
+    //CHECK FORM 
+    if (!checkForm())
+      return;
+      
+    // Initialisation d'un tableau permettant de récupérer les id des teddies dans le local storage
     let products = [];
     let cart = JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
     console.log(cart);
@@ -64,6 +61,7 @@ document.querySelector("form").addEventListener("submit", function(e) {
     }
     console.log(products);
 
+    // Initialisation d'une variable devant comporter les infos contacts attendus par l'api ainsi qu'un array comportant les id des teddies
     var order = {
       contact : {
       firstName:  document.getElementById('firstname').value,
@@ -75,13 +73,17 @@ document.querySelector("form").addEventListener("submit", function(e) {
       products: products
     };
 
+    // Envoi de l'order à l'api et redirection vers la page de confirmation
     ajaxPost(
       "http://localhost:3000/api/teddies/order",
       order,
       function(reponse) {
         console.log(reponse);
-        clearCart();
-        window.location.href = 'confirmation.html?price=250&orderId=xxxxxxx';
+        console.log(JSON.parse(reponse).orderId);
+        let finalOrder = {id: JSON.parse(reponse).orderId, price: totalToPay};
+        console.log(finalOrder)
+        saveLocalStorage(LABEL_VAR_LOCAL_STORAGE_ORDER, finalOrder);
+        //--TODO créer fichier confirm.js pour load() et payer un resto à Jerem et lui faire un gros bisou
       },
       true
     );

@@ -2,13 +2,17 @@
 refreshBadge() 
 
 //=== Variable permettant d'appeler la méthode GetParams pour récupérer l'id dans l'adresse URL de la page produit ===//
-let params = GetParams(window.location.href);
+
+
+const params = new URLSearchParams(window.location.search);
+//const myParam = params.get('myParam');
+//let params = GetParams(window.location.href);
 
 //=== Variable qui permet de d'utilser les infos récupérées de l'API ===//
 let product = null;
 
 //=== Récupération du produit ciblé (grâce à l'ajout de l'id produit) ===//
-ajaxGet('http://localhost:3000/api/teddies/' + params.id, function (reponse) {
+ajaxGet('http://localhost:3000/api/teddies/' + params.get("id"), function (reponse) {
     product  = JSON.parse(reponse);
     let container = document.getElementById("product-container");
     container.innerHTML = createArticleHtml(product);
@@ -57,7 +61,7 @@ const createArticleHtml = (teddy) => {
 }
 
 //=== Ajout d'une fonction qui isole l'id dans l'adresse url ===//
-function GetParams(url) {
+/*function GetParams(url) {
 	var params = {};
 	var parser = document.createElement('a');
 	parser.href = url;
@@ -68,14 +72,9 @@ function GetParams(url) {
 		params[pair[0]] = decodeURIComponent(pair[1]);
 	}
 	return params;
-}
+}*/
 
-//=== Ajout d'une fonction qui permet, au clic, de sauvegarder l'article dans le panier via le local storage ===//
-const saveToCart = () => {
-    // Création de deux variables permettant de récupérer la valeur concernant les choix "couleur" et "quantité" de l'utilisateur
-    let colorSelected = document.getElementById("inputGroupSelect01").value;
-    let quantitySelected = document.getElementById("options").value;
-
+const addProductToCart = (colorSelected, quantitySelected) => {
     // Création de "sweetalerts" rappelant à l'utilisateur l'obigation de choisir une couleur et une quantité (par défaut la quantité = 1)
     if (colorSelected == "" || quantitySelected == "") {
         Swal.fire("Oops!", "Choisissez une couleur et une quantité :)", "error");
@@ -91,7 +90,7 @@ const saveToCart = () => {
         product.colorSelected = colorSelected;*/
 
         // Création d'un objet regroupant l'ensemble des informations pour le setitem au local storage via la méthode addToCart
-        let productToAdd = {'id': product._id, 'name': product.name, 'color': colorSelected, 'quantity' : quantitySelected, 'price' : product.price};
+        let productToAdd = {id: product._id, name: product.name, color: colorSelected, quantity : quantitySelected, price : product.price};
 
         // Utilisation de la méthode addToCart pour sauvegarder les produits sélectionner
         addToCart(productToAdd);
@@ -102,6 +101,15 @@ const saveToCart = () => {
         // Recours à la méthode refreshBadge pour un refresh du badge sur le site au moment du clic "sélectionner" (cf. méthode dans helper.js ligne 33)
         refreshBadge();
     }; 
+}
+
+//=== Ajout d'une fonction qui permet, au clic, de sauvegarder l'article dans le panier via le local storage ===//
+const saveToCart = () => {
+    // Création de deux variables permettant de récupérer la valeur concernant les choix "couleur" et "quantité" de l'utilisateur
+    let colorSelected = document.getElementById("inputGroupSelect01").value;
+    let quantitySelected = document.getElementById("options").value;
+    // Création méthode par Aurélien
+    addProductToCart(colorSelected, quantitySelected);
 }
 
 //=== Ajout d'une fonction addToCart qui permet de faire un setitem du produit au localstorage ===//

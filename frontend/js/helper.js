@@ -1,6 +1,7 @@
 // --- Constante qui permet l'initialisation du local storage ---//
 const LABEL_VAR_LOCAL_STORAGE = "app_oribear";
 const LABEL_VAR_LOCAL_STORAGE_BADGE = "badge_oribear";
+const LABEL_VAR_LOCAL_STORAGE_ORDER = "order_oribear";
 
 // --- Fonctions qui permet de retoucher le format du prix ---//
 function formatPrice(price) {
@@ -32,13 +33,21 @@ function newDescription(description) {
 // --- Fonction qui assure le rafraîchissement de l'icône du panier qui comptabilise le nombre d'articles ajoutés ---//
 function refreshBadge() {
     // Initialisation d'une variable qui renvoie aux données badge disponible dans le local storage badge soit un nombre
-    let refreshBadge = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE_BADGE);
+    let refreshBadge = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE_BADGE);
     // Initialisation d'une variable qui renvoie à l'id badge du DOM sur les 3 pages du site
     let badge = document.getElementById("badge");
     // Ajout de ce nombre au document HTML
     badge.innerHTML = refreshBadge;
 }
 
+//-- Sauvegarde dans le local storage l'id donnée
+function saveLocalStorage(id, value){
+    localStorage.setItem(id, JSON.stringify(value));
+}
+//-- Va chercher la valeur du localStorage id
+function loadLocalStorage(id){
+    return (localStorage.getItem(id) == null) ? [] : JSON.parse(localStorage.getItem(id));
+}
 
 
 
