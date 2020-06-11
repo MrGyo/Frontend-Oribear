@@ -2,14 +2,14 @@
 function checkForm(){
     
     let lastNameControl = document.getElementById("lastname").value;
-    let regexLastName = /^[A-Za-z]+$/;
+    let regexLastName =  /^[A-Za-zéèàêë-]+$/;
     if (!regexLastName.test(lastNameControl) || lastNameControl.length <= 1) {
         Swal.fire("Oops", "Saisissez un nom valide ! :)", "error");
         return false;
     }
 
     let firstNameControl = document.getElementById("firstname").value;
-    let regexFirstName = /^[A-Za-z]+$/;
+    let regexFirstName =  /^[A-Za-zéèàêë-]+$/;
     if (!regexFirstName.test(firstNameControl) || firstNameControl.length <= 1) {
         Swal.fire("Oops", "Saisissez un prénom valide ! :)", "error");
         return false;
