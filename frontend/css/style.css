@@ -160,7 +160,6 @@ footer {
 /*-- shoppingcart.html --*/
 .products_list {
   padding-top: 5%;
-  /*padding-bottom: 3%;*/
 }
 
 .card {
@@ -170,15 +169,6 @@ footer {
 .card-text-2 {
   font-weight: bold;
 }
-
-/*.block-cart {
-  background-image: url(../images/wall.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100vh;
-  border-bottom: 3px solid #303030;
-}*/
 
 .form-cart {
   margin-bottom: 5%;
@@ -217,35 +207,22 @@ footer {
   font-weight: bold;
 }
 
-/*hr {
-  border: none;
-  border-top: 8px double #303030;
-  color: #303030;
-  overflow: visible;
-  text-align: center;
-  margin-top: 0;
-}
-
-hr:after {
-  content: url(../images/tongue3.png);
-  position: relative;
-  top: -2.5px;
-}*/
-
-/*.test-mb {
-  margin-bottom: 5%;
-}*/
-
-/*.block-form {
-  background-image: url(../images/bear_form.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}*/
-
+/*-- confirmation.html --*/
 #confirmation {
   font-family: "Lobster", cursive;
   font-size: 3em;
   font-weight: bold;
   text-align: center;
+}
+
+#thanks {
+  font-family: "Lobster", cursive;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.details_order {
+  font-family: 'Monserrat', sans-serif;
+  font-size: 1.8em;
 }
 

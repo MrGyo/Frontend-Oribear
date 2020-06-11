@@ -1,2 +1,2 @@
-Commencer le formulaire, check TP Aurélien
+Voir l'utilisation des const var let dans le code
 
