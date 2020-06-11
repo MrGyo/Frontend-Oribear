@@ -1,36 +1,59 @@
-// --- Constante qui permet l'initialisation du local storage ---//
+//=== GESTION DU LOCAL STORAGE ===//
+
+// Déclaration de 3 constantes dédiées au local storage
 const LABEL_VAR_LOCAL_STORAGE = "app_oribear";
 const LABEL_VAR_LOCAL_STORAGE_BADGE = "badge_oribear";
 const LABEL_VAR_LOCAL_STORAGE_ORDER = "order_oribear";
 
-// --- Fonctions qui permet de retoucher le format du prix ---//
+// Sauvegarde dans le local storage l'id donnée
+function saveLocalStorage(id, value){
+    localStorage.setItem(id, JSON.stringify(value));
+}
+
+// Va chercher la valeur du localStorage id
+function loadLocalStorage(id){
+    return (localStorage.getItem(id) == null) ? [] : JSON.parse(localStorage.getItem(id));
+}
+
+
+//=== FONCTION POUR LE FORMAT DU PRIX ===//
+
+// fonction pour le format du prix de la page produit
 function formatPrice(price) {
     let newPrice = price / 100;
     newPrice = newPrice.toFixed(2);
     return newPrice.replace(".", ",");
 }
+// fonction pour le format du prix de la page panier
 function formatPriceBis(price) {
     return price.replace(".", ",");
 }
 
-// --- Fonction qui permet de modifier certains noms ---//
-/*function changeName(name) {
-    name = name.replace("Norbert", "Serge");
-    name = name.replace("Arnold", "Marcel");
-    return name;
-}*/
+//=== FONCTION POUR LE PANIER ===//
 
-// --- Fonction qui permet de changer la description du produit ---//
-function newDescription(description) {
-    if (description === "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.") {
-        let newDescription = "Quand le JavaScript te fait craquer, quand tu sens que tu vas manger ton clavier... fais lui un gros calin et tout ira bien !";
-        return newDescription;
+// Méthode qui permet de vérifier si la panier comporte au moins un article
+function checkCart() {
+    let checkCart = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
+    if (checkCart == null) {
+        Swal.fire("Oops", "Votre panier est vide ! :)", "error");
+        return false;
     } else {
-        return description;
+        return true;
+    }
+}
+
+// Méthode qui permet de vider tout le panier de l'utilisateur ---//
+function clearCart() {
+    let cartToClear = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
+    if (cartToClear != null) {
+        localStorage.clear(LABEL_VAR_LOCAL_STORAGE); 
     };
 }
 
-// --- Fonction qui assure le rafraîchissement de l'icône du panier qui comptabilise le nombre d'articles ajoutés ---//
+
+//=== FONCTION POUR LE REFRESH DU BADGE ===//
+
+// Méthode qui permet de faire un refresh du badge après ajout d'un produit
 function refreshBadge() {
     // Initialisation d'une variable qui renvoie aux données badge disponible dans le local storage badge soit un nombre
     let refreshBadge = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE_BADGE);
@@ -40,14 +63,11 @@ function refreshBadge() {
     badge.innerHTML = refreshBadge;
 }
 
-//-- Sauvegarde dans le local storage l'id donnée
-function saveLocalStorage(id, value){
-    localStorage.setItem(id, JSON.stringify(value));
-}
-//-- Va chercher la valeur du localStorage id
-function loadLocalStorage(id){
-    return (localStorage.getItem(id) == null) ? [] : JSON.parse(localStorage.getItem(id));
-}
+
+
+
+
+
 
 
 

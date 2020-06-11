@@ -34,7 +34,7 @@
                             <h1>Oribear</h1>
                             <p class="slogan">Le site des "Teddies"...</p>
                             <p class="slogan">...&nbsp;pour Développeurs Web en détresse !</p>
-                            <button type="button" class="btn btn-dark mt-4 know-more" onClick="document.getElementById('ok').scrollIntoView();"><span id="hug" class="mr-2">Click for a hug</span><i class="fas fa-heart"></i></button>
+                            <button type="button" class="btn btn-dark mt-4 know-more" onClick="document.getElementById('scroll_helper').scrollIntoView();"><span id="hug" class="mr-2">Click for a hug</span><i class="fas fa-heart"></i></button>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="container products_list mb-5" id="ok">
+        <div class="container products_list mb-5" id="scroll_helper">
             <h2>Une vaste gamme de "Teddies" !</h2>
             <div class="row" id="articles-container"></div>
         </div>
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <div class="circle text-center" id="bear-print" onclick="topFunction()"><img src="images/bear-mini-print-2.png" title="Retour en haut" alt="Logo Oribear" class="ml-1"></div>
+                <div class="circle text-center" id="bear-print" onClick="document.getElementById('scroll_helper').scrollIntoView();"><img src="images/bear-mini-print-2.png" title="Retour en haut" alt="Logo Oribear" class="ml-1"></div>
             </div>
         </div>
         <footer>

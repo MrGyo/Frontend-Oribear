@@ -1,12 +1,8 @@
 //=== Méthode permettant un refresh du nombre de produits au panier dans le header ===//
 refreshBadge() 
 
-//=== Variable permettant d'appeler la méthode GetParams pour récupérer l'id dans l'adresse URL de la page produit ===//
-
-
+//=== Variable permettant de récupérer l'id dans l'adresse URL de la page produit ===//
 const params = new URLSearchParams(window.location.search);
-//const myParam = params.get('myParam');
-//let params = GetParams(window.location.href);
 
 //=== Variable qui permet de d'utilser les infos récupérées de l'API ===//
 let product = null;
@@ -31,7 +27,7 @@ const createArticleHtml = (teddy) => {
                     '<img src="'+ teddy.imageUrl +'" class="w-100">' +
                     '<div class="card-body" id="product-details">' +
                         '<h5 class="card-title" id="name">' + teddy.name + '</h5>' +
-                        '<p class="card-text-1">' + newDescription(teddy.description) + '</p>' +
+                        '<p class="card-text-1">' + teddy.description + '</p>' +
                         '<p class="card-text-2" id="price">Prix: <span style="color:#dc3545;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
@@ -60,20 +56,7 @@ const createArticleHtml = (teddy) => {
             '</div>';
 }
 
-//=== Ajout d'une fonction qui isole l'id dans l'adresse url ===//
-/*function GetParams(url) {
-	var params = {};
-	var parser = document.createElement('a');
-	parser.href = url;
-	var query = parser.search.substring(1);
-	var vars = query.split('&');
-	for (var i = 0; i < vars.length; i++) {
-		var pair = vars[i].split('=');
-		params[pair[0]] = decodeURIComponent(pair[1]);
-	}
-	return params;
-}*/
-
+//=== Ajout d'une fonction qui permet  de sauvegarder l'article dans le panier via le local storage ===//
 const addProductToCart = (colorSelected, quantitySelected) => {
     // Création de "sweetalerts" rappelant à l'utilisateur l'obigation de choisir une couleur et une quantité (par défaut la quantité = 1)
     if (colorSelected == "" || quantitySelected == "") {
@@ -85,9 +68,6 @@ const addProductToCart = (colorSelected, quantitySelected) => {
             showConfirmButton: false,
             timer: 2500,
         });
-
-        /*product.quantitySelected = quantitySelected;
-        product.colorSelected = colorSelected;*/
 
         // Création d'un objet regroupant l'ensemble des informations pour le setitem au local storage via la méthode addToCart
         let productToAdd = {id: product._id, name: product.name, color: colorSelected, quantity : quantitySelected, price : product.price};
@@ -128,7 +108,7 @@ function addToCart(productToAdd) {
     localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, JSON.stringify(cart));
 }
 
-//=== Ajout d'une fonction updateBadege qui permet de faire un setitem de la quantité dédiée au localstorage du badge ===//
+//=== Méthode qui permet de faire un setitem de la quantité dédiée au localstorage du badge ===//
 function updateBadge() {
     // Initialisation du panier sur la base de ce qui se trouve au local storage
     let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
@@ -140,6 +120,8 @@ function updateBadge() {
     // Une fois la boucle réalisée un setitem permet l'ajout de la quantité des produits au panier au niveau du badge
     localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_BADGE, quantities);
 }
+
+
 
 
 

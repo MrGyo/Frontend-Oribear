@@ -2,7 +2,6 @@
 refreshBadge() 
 
 //=== PARTIE DEDIEE A LA CONSTRUCTION DU TABLEAU RECAPITUALITF ===//
-
 //=== Initialisation d'une variable pour avoir recours au contenu du local storage ===//
 let products = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
 
@@ -35,20 +34,15 @@ function createArticleHtml(product) {
             '</tr>';
         }
 
-//=== fonction permettant de vider tout le panier de l'utilisateur ===//
-function clearCart() {
-    let cartToClear = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
-    if (cartToClear != null) {
-        localStorage.clear(LABEL_VAR_LOCAL_STORAGE); 
-    };
-}
-
-//=== PARTIE DEDIEE A LA CONSTRUCTION DU FORMULAIRE ===//
-
+//=== PARTIE DEDIEE A LA VALIDATION DE LA COMMANDE ===//
 document.querySelector("form").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    //Contrôle du formulaire avant envoi cf. confirm.js
+    // Contrôle du panier si vide cf. helper.js
+    if (!checkCart())
+      return;
+  
+    // Contrôle du formulaire avant envoi cf. confirm.js
     if (!checkForm())
       return;
 

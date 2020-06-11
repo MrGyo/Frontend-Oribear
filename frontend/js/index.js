@@ -19,27 +19,12 @@ const createArticleHtml = (teddy) => {
                     '<img src="'+ teddy.imageUrl +'" class="w-100">' +
                     '<div class="card-body">' +
                         '<h5 class="card-title">' + teddy.name + '</h5>' +
-                        '<p class="card-text-1">' + newDescription(teddy.description) + '</p>' +
+                        '<p class="card-text-1">' + teddy.description + '</p>' +
                         '<p class="card-text-2">Prix: <span style="color:#dc3545;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
                         '<a href="html/product.html?id='+ teddy._id + '" class="btn btn-secondary mt-3">Sélectionner</a>' +
                     '</div>' + 
                 '</div>' +
             '</div>';
-}
-
-//=== Fonction qui permet un scroll to top auto pour le bouton "bear-print" en bas de page sous le carrousel ===//
-var mybutton = document.getElementById("bear-print");
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
 }
 
 
