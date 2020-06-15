@@ -1,0 +1,73 @@
+//=== index.js ===//
+
+1. Récupération des fiches produits via l'api (id, color, name, description, price)
+    => Utilisation d'une fonction ajax GET pour la récupération des éléments relatifs aux produits;
+    => On crée une boucle afin d'ajouter chacun des produits ainsi que les caractéristiques de chacun d'entre eux;
+    => Cette boucle appelle la méthode dédiée à l'ajout des fiches produits;
+
+2. Création d'une méthode pour ajouter les fiches produits sur la page index.html
+    => On crée les balises HTML souhaitées en y intégrant les caractéristiques des fiches produits (id, color, name, description, price);
+    => Le bouton sélectionner, renvoyant à la page produit, contient l'id du produit sélectionné dans l'url;
+
+//=== product.js ===//
+
+1. Déclaration d'une variable qui va permettre de rechercher l'id du produit dans l'url en retournant la première valeur associée au paramètre de recherche donné
+
+2. Déclaration d'une variable "product = null" qui va nous permettre d'utiliser les données de l'api en dehors de la fonction ajax get
+
+3. Récupération du produit ciblé (grâce à l'ajout de l'id produit dans la fonction ajax)
+    => Utilisation de la méthode dédiée à l'ajout de la fiche produit sélectionnée par l'utilsateur;
+    => Intégration des options offertes à l'utilsateur lui permettant de choisir une quantité et une couleur : 
+        - La quantité est générée de manière "statique" avec une possibilité de 1 à 5
+        - Les couleurs disponibles provenant de l'api sont ajoutées au moyen d'une boucle qui va générer les options de personnalisation du produit
+    => le bouton "Ajouter au panier" contient une fonction "onClick" qui va permettre : 
+        - De sauvegarder le produit dans le localstorage;
+        - De mettre à jour la nombre de produits au panier sur le badge du cart dans le header.
+
+4. Ajout d'une fonction qui permet, au clic, de sauvegarder l'article dans le panier via le localstorage
+    => Création de deux variables permettant de récupérer la valeur concernant les choix "couleur" et "quantité" de l'utilisateur :
+    => Une fois récupérer celle-ci sont passées en paramètre dans la méthode addProductToCart
+
+5. Ajout d'une fonction qui permet  préparer la sauvegarde à faire dans le localstorage 
+    => Vérification si l'utilisateur à bien choisi une couleur ET une quantité;
+    => Création d'un objet qui va comporter l'ensemble des informations que l'on souhaite sauvegarder dans le locatstorage = productToAdd;
+    => On passe en paramètre le produit à ajouter (productToAdd) à la méthode qui va créer la sauvegarde dans le localtstorage;
+    => On appelle la méthode updateBadge et resfreshBadge afin de mettre à jour le badge du cart dans le header.
+
+6. Ajout d'une fonction addToCart qui permet de faire un setitem du produit au localstorage
+    => On vérifie au préalable sur le localtstorage est vide, si vide on crée un array vide, sinon on parse les données qu'on récupère du localtstorage;
+    => On déclare une variable article qui permet de vérifier si un même article est déjà ajouté et d'assurer l'addition des quantités (si id et color sont égales) puis on réalise un push du produit à ajouter au cart;
+    => Une fois la condition ci-dessus vérifiée un setitem permet d'envoyer le nouveau produit cliqué au localstorage (ainsi que ceux éventuellement déjà ajoutés).
+
+7. Ajout d'une méthode qui permet de faire un setitem au localstorage du badge de la quantité de produits ajoutés
+    => Initialisation du panier sur la base de ce qui se trouve au localstorage;
+    => Pour chaque produit présent au panier la quantité s'additionne à celle comptabilisée au moment de l'ajout;
+    => Une fois la boucle réalisée un setitem permet l'ajout de la quantité des produits au panier au niveau du badge;
+    NB : une fois l'update réalisée, un refresh du badge sera nécessaire pour afficher la bonne quantité de produits ajoutés dans le cart. Pour se faire on fera appel à la méthode refreshBadge dans le helper.js.
+
+//=== shoppingcart.js ===//
+
+1. Déclaration d'une variable pour avoir accès au contenu du local storage
+
+2. Déclaration d'une variable qui intialise un montant à payer à 0
+
+3. Création d'une boucle pour ajouter chaque produit dans le tableau récapitulatif
+    => Initialisation d'une variable pour procéder à la multiplication entre la quantité et le prix par produit (calcul pour chacune des lignes du tableau);
+    => Cette boucle appelle la méthode dédiée à l'ajout du tableau récapitulatif pour chacun des produits;
+    => Ajout d'un montant total à payer en fin de tableau, initialisé en amont à 0, on additionne les montants par ligne.
+
+1. Envoi de l'order à l'api et redirection vers la page de confirmation = ajax post
+    => On contrôle si la panier est vide ET si le formulaire est rempli correctement avant validation de l'order;
+    => On initialise un tableau vide pour récupérer les id des produits disponibles dans le localstorage;
+    => On intialise une variable devant comporter les infos contacts attendus par l'api ainsi qu'un array comportant les id des teddies;
+    => Création d'une fonction ajax post qui va envoyer l'order à l'api;
+    => On initialise une nouvelle variable qui va récupérer les informations qu'on souhaite afficher sur la page de confirmation de commande (prénom, orderId et prix);
+    => On renvoie vers la page de confirmation.
+
+//=== confirm.js ===//
+
+1. On déclare une variable pour avoir accès au contenu du localstorage;
+2. On affiche chacune des informations récupérées sur la page html dédiée à la confirmation;
+3. On fait appel à la méthode qui permet de vider le panier sachant que la commande est confirmée;
+4. On fait un refresh du badge.
+

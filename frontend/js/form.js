@@ -1,4 +1,6 @@
 //--- Contrôle des données du formulaire --//
+//--TODO à voir pour une simplification en une fonction
+
 function checkForm(){
     
     let lastNameControl = document.getElementById("lastname").value;

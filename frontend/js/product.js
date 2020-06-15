@@ -8,6 +8,7 @@ const params = new URLSearchParams(window.location.search);
 let product = null;
 
 //=== Récupération du produit ciblé (grâce à l'ajout de l'id produit) ===//
+// URLSearchParams.get() => Retourne la première valeur associée au paramètre de recherche donné
 ajaxGet('http://localhost:3000/api/teddies/' + params.get("id"), function (reponse) {
     product  = JSON.parse(reponse);
     let container = document.getElementById("product-container");
@@ -56,7 +57,16 @@ const createArticleHtml = (teddy) => {
             '</div>';
 }
 
-//=== Ajout d'une fonction qui permet  de sauvegarder l'article dans le panier via le local storage ===//
+//=== Ajout d'une fonction qui permet, au clic, de sauvegarder l'article dans le panier via le local storage ===//
+const saveToCart = () => {
+    // Création de deux variables permettant de récupérer la valeur concernant les choix "couleur" et "quantité" de l'utilisateur
+    let colorSelected = document.getElementById("inputGroupSelect01").value;
+    let quantitySelected = document.getElementById("options").value;
+    // Utilisation de la méthode sur les options choisies et la création d'un objet regroupant les infos à sauvegarder
+    addProductToCart(colorSelected, quantitySelected);
+}
+
+//=== Ajout d'une fonction qui permet  préparer la sauvegarde à faire dans le localstorage ===//
 const addProductToCart = (colorSelected, quantitySelected) => {
     // Création de "sweetalerts" rappelant à l'utilisateur l'obigation de choisir une couleur et une quantité (par défaut la quantité = 1)
     if (colorSelected == "" || quantitySelected == "") {
@@ -83,15 +93,6 @@ const addProductToCart = (colorSelected, quantitySelected) => {
     }; 
 }
 
-//=== Ajout d'une fonction qui permet, au clic, de sauvegarder l'article dans le panier via le local storage ===//
-const saveToCart = () => {
-    // Création de deux variables permettant de récupérer la valeur concernant les choix "couleur" et "quantité" de l'utilisateur
-    let colorSelected = document.getElementById("inputGroupSelect01").value;
-    let quantitySelected = document.getElementById("options").value;
-    // Création méthode par Aurélien
-    addProductToCart(colorSelected, quantitySelected);
-}
-
 //=== Ajout d'une fonction addToCart qui permet de faire un setitem du produit au localstorage ===//
 function addToCart(productToAdd) {
     // Initialisation du panier, on vérifie si certaines infos figurent déjà au localstorage, si oui parse des données
@@ -113,7 +114,7 @@ function updateBadge() {
     // Initialisation du panier sur la base de ce qui se trouve au local storage
     let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
     let quantities = 0;
-    // Pour chaque produit identique présent au panier la quantité s'additionne à celle comptabilisée au moment de l'ajout
+    // Pour chaque produit présent au panier la quantité s'additionne à celle comptabilisée au moment de l'ajout
     for (let product of cart) {
         quantities += parseInt(product.quantity)
     }
