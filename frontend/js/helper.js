@@ -15,7 +15,6 @@ function loadLocalStorage(id){
     return (localStorage.getItem(id) == null) ? [] : JSON.parse(localStorage.getItem(id));
 }
 
-
 //=== FONCTION POUR LE FORMAT DU PRIX ===//
 
 // fonction pour le format du prix de la page produit

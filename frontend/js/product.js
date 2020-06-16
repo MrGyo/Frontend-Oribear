@@ -96,7 +96,9 @@ const addProductToCart = (colorSelected, quantitySelected) => {
 //=== Ajout d'une fonction addToCart qui permet de faire un setitem du produit au localstorage ===//
 function addToCart(productToAdd) {
     // Initialisation du panier, on vérifie si certaines infos figurent déjà au localstorage, si oui parse des données
-    let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+
+    //let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+    let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
 
     // Déclaration d'une variable article qui permet de vérifier si un même article est déjà ajouté et d'assurer l'addition des quantités
     let article = cart.find( element => element.id === productToAdd.id && element.color === productToAdd.color);
@@ -106,13 +108,18 @@ function addToCart(productToAdd) {
         cart.push(productToAdd)
     }
     // Une fois la condition ci-dessus vérifiée un setitem permet d'envoyer le nouveau produit cliqué au local storage
-    localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, JSON.stringify(cart));
+
+    //localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, JSON.stringify(cart));
+    saveLocalStorage(LABEL_VAR_LOCAL_STORAGE, cart)
 }
 
 //=== Méthode qui permet de faire un setitem de la quantité dédiée au localstorage du badge ===//
 function updateBadge() {
     // Initialisation du panier sur la base de ce qui se trouve au local storage
-    let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+
+    //let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+    let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
+    
     let quantities = 0;
     // Pour chaque produit présent au panier la quantité s'additionne à celle comptabilisée au moment de l'ajout
     for (let product of cart) {
