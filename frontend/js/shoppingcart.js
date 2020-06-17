@@ -4,7 +4,6 @@ refreshBadge()
 //=== PARTIE DEDIEE A LA CONSTRUCTION DU TABLEAU RECAPITUALITF ===//
 //=== Initialisation d'une variable pour avoir recours au contenu du local storage ===//
 let products = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
-console.log(products)
 
 //=== Par défaut le montant à payer par l'utilisateur est initialisé à 0 ===//
 let totalToPay = 0

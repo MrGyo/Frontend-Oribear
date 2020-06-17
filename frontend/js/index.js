@@ -2,16 +2,6 @@
 refreshBadge() 
 
 //=== Récupération des fiches produits via l'api (id, color, name, description, price) ===//
-/*ajaxGet("http://localhost:3000/api/teddies", function (reponse) {
-    // Dans la variables teddies on récupère tous les teddies issus de l'api
-    let teddies = JSON.parse(reponse);
-    // Pour chacun des teddies on va incrémenter les balises HTML définies dans une méthode
-    teddies.forEach(function(teddy) {
-        let container = document.getElementById("articles-container");
-        container.innerHTML += createArticleHtml(teddy);
-    });
-})*/
-
 let url = 'http://localhost:3000/api/teddies';
 
 async function retrieveContent(url){

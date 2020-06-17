@@ -8,12 +8,20 @@ const params = new URLSearchParams(window.location.search);
 let product = null;
 
 //=== Récupération du produit ciblé (grâce à l'ajout de l'id produit) ===//
-// URLSearchParams.get() => Retourne la première valeur associée au paramètre de recherche donné
-ajaxGet('http://localhost:3000/api/teddies/' + params.get("id"), function (reponse) {
-    product  = JSON.parse(reponse);
-    let container = document.getElementById("product-container");
-    container.innerHTML = createArticleHtml(product);
-})
+let url = 'http://localhost:3000/api/teddies/' + params.get("id");
+
+async function retrieveContent(url){
+    let result = await fetch(url).then(response => {
+        return response.json()
+    })
+    return result;  
+}
+
+retrieveContent(url).then(productSelected => {
+        let container = document.getElementById("product-container");
+        container.innerHTML = createArticleHtml(productSelected);
+        product = productSelected;
+});
 
 //=== Création d'une méthode pour implémenter la fiche produit ciblée sur la page product.html ===//
 const createArticleHtml = (teddy) => {
@@ -119,7 +127,7 @@ function updateBadge() {
 
     //let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
     let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
-    
+
     let quantities = 0;
     // Pour chaque produit présent au panier la quantité s'additionne à celle comptabilisée au moment de l'ajout
     for (let product of cart) {
