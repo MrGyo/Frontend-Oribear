@@ -56,6 +56,21 @@ document.querySelector("form").addEventListener("submit", function(e) {
     console.log(products);
 
     // Initialisation d'une variable devant comporter les infos contacts attendus par l'api ainsi qu'un array comportant les id des teddies
+    
+
+    // Envoi de l'order à l'api et redirection vers la page de confirmation
+    /*ajaxPost(
+      "http://localhost:3000/api/teddies/order",
+      order,
+      function(reponse) {
+        let finalOrder = {firstname: JSON.parse(reponse).contact.firstName, id: JSON.parse(reponse).orderId, price: totalToPay};
+        console.log(finalOrder)
+        saveLocalStorage(LABEL_VAR_LOCAL_STORAGE_ORDER, finalOrder);
+        window.location.href = 'confirmation.html?';
+      },
+      true
+    );*/
+    let url = 'http://localhost:3000/api/teddies/order';
     let order = {
       contact : {
       firstName:  document.getElementById('firstname').value,
@@ -67,19 +82,32 @@ document.querySelector("form").addEventListener("submit", function(e) {
       products: products
     };
 
-    // Envoi de l'order à l'api et redirection vers la page de confirmation
-    ajaxPost(
-      "http://localhost:3000/api/teddies/order",
-      order,
-      function(reponse) {
-        console.log(reponse);
-        console.log(JSON.parse(reponse).orderId);
-        let finalOrder = {firstname: JSON.parse(reponse).contact.firstName, id: JSON.parse(reponse).orderId, price: totalToPay};
-        console.log(finalOrder)
-        saveLocalStorage(LABEL_VAR_LOCAL_STORAGE_ORDER, finalOrder);
-        window.location.href = 'confirmation.html?';
-      },
-      true
-    );
+    retrieveContent(url, order).then(response => {
+      let finalOrder = {firstname: response.contact.firstName, id: response.orderId, price: totalToPay};
+      console.log(finalOrder)
+      saveLocalStorage(LABEL_VAR_LOCAL_STORAGE_ORDER, finalOrder);
+      window.location.href = 'confirmation.html?';
+    });
   });
 
+
+  async function retrieveContent(url, order) {
+    console.log(order);
+    
+    let result = await fetch(url, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(order)
+    }).then(response => {
+        return response.json()
+    })
+    return result;  
+  }
+
+
+    
+
+
+        
+  
+  

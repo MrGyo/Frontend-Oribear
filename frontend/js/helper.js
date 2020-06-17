@@ -42,13 +42,73 @@ function checkCart() {
 }
 
 // Méthode qui permet de vider tout le panier de l'utilisateur ---//
-function clearCart() {
-    let cartToClear = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
-    if (cartToClear != null) {
-        localStorage.clear(LABEL_VAR_LOCAL_STORAGE); 
-    };
+/*function clearCartConfirm() {
+        Swal.fire({
+            title: 'Êtes-vous sûr de vouloir vider votre panier ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#dc3545',
+            cancelButtonText: 'Annuler',
+            confirmButtonText: 'Vider le panier'
+          }).then((result) => {
+            if (result.value) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Votre panier est vidé !',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                clearCart();
+                setTimeout(function(){ window.location.href = '/'; }, 2000);
+            }
+          })
+}*/
+
+
+// Méthode qui permet de vider tout le panier de l'utilisateur ---//
+function clearCartConfirm() {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+      })
+    swalWithBootstrapButtons.fire({
+        title: 'Êtes-vous sûr de vouloir vider votre panier ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Vider le panier',
+        cancelButtonText: 'Annuler',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+            swalWithBootstrapButtons.fire(
+                'Deleted!',
+                'Votre panier est vidé',
+                'success'
+                )
+            clearCart();
+            setTimeout(function(){ window.location.href = '/'; }, 2000);
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+        swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Poursuivez votre commande',
+            'error'
+            )
+        }
+    })
 }
 
+function clearCart(){
+    let cartToClear = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
+    if (cartToClear != null) {
+        localStorage.clear(LABEL_VAR_LOCAL_STORAGE);
+    } 
+
+}
 //=== FONCTION POUR LE REFRESH DU BADGE ===//
 
 // Méthode qui permet de faire un refresh du badge après ajout d'un produit
@@ -60,7 +120,6 @@ function refreshBadge() {
     // Ajout de ce nombre au document HTML
     badge.innerHTML = refreshBadge;
 }
-
 
 
 

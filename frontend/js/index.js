@@ -18,7 +18,6 @@ retrieveContent(url).then(teddies => {
     })
 });
 
-
 //=== Création d'une méthode pour ajouter les fiches produits sur la page index.html ===//
 const createArticleHtml = (teddy) => {
     return  '<div class="col-12 mb-3">' +

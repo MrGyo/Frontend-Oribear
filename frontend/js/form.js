@@ -1,5 +1,4 @@
 //--- Contrôle des données du formulaire --//
-
 function checkForm(){
     if  (!checkFieldIdentity("lastname", "Saisissez un nom valide ! :)" ) ) return false; 
     if  (!checkFieldIdentity("firstname", "Saisissez un prénom valide ! :)" ) ) return false; 
