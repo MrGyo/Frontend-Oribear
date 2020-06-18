@@ -262,7 +262,7 @@ footer {
 /* PERSONNALISATION DES BOUTONS SWALFIRE */
 
 .btn-cart {
-  width: 220px;
+  width: 210px;
   margin-left: 2%;
   background-color: #dd3e89!important;
   border-color: #dd3e89!important;
@@ -274,7 +274,7 @@ footer {
 }
 
 .btn-index {
-  width: 220px;
+  width: 210px;
   margin-right: 2%;
 }
 
@@ -355,6 +355,18 @@ footer {
 
   #price {
     font-size: 1.5em;
+  }
+
+  .btn-cart {
+    width: 210px;
+    margin-left: 0;
+    margin-top: 2%;
+  }
+  
+  .btn-index {
+    width: 210px;
+    margin-right: 0;
+    margin-top: 2%;
   }
   
   

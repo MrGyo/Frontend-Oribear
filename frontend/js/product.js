@@ -77,7 +77,7 @@ const saveToCart = () => {
 //=== Ajout d'une fonction qui permet  préparer la sauvegarde à faire dans le localstorage ===//
 const addProductToCart = (colorSelected, quantitySelected) => {
     // Appel des méthodes pour le contrôle des choix de l'utilsateur
-    if (colorSelected == "" || quantitySelected == "") {
+    if (colorSelected == "") {
         alertUserChoice() 
     } else {
         confirmChoice()

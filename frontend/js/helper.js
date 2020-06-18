@@ -40,7 +40,7 @@ function alertUserChoice() {
       })
       swalWithBootstrapButtons.fire({
         title: 'Oops!',
-        text: 'Choisissez une couleur et une quantité :)',
+        text: 'Choisissez une couleur :)',
         icon: 'error',
         confirmButtonText: 'OK',
       }).then((result) => {
@@ -92,7 +92,7 @@ function checkCart() {
           })
           swalWithBootstrapButtons.fire({
             title: 'Oops!',
-            text: 'Choisissez une couleur et une quantité :)',
+            text: 'Votre panier est vide :)',
             icon: 'error',
             confirmButtonText: 'OK',
           }).then((result) => {
