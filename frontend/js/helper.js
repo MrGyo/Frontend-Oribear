@@ -30,7 +30,7 @@ function formatPriceBis(price) {
 
 //=== FONCTION POUR LE CHOIX DU PRODUIT ===//
 
-// Méthode qui permet de
+// Méthode qui permet de rappeler l'utilisateur qu'il doit choisir une couleur et une quantité
 function alertUserChoice() {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -50,6 +50,7 @@ function alertUserChoice() {
       })
 } 
 
+// Méthode qui confirme le choix de l'utilisateur et qui lui propose soit de retourner au menu soit de finaliser sa commande
 function confirmChoice() {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {

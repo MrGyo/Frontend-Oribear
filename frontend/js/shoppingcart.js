@@ -36,64 +36,37 @@ function createArticleHtml(product) {
 
 //=== PARTIE DEDIEE A LA VALIDATION DE LA COMMANDE ===//
 document.querySelector("form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Contrôle du panier si vide cf. helper.js
-    if (!checkCart())
-      return;
-  
-    // Contrôle du formulaire avant envoi cf. confirm.js
-    if (!checkForm())
-      return;
+  // Contrôle du panier si vide cf. helper.js
+  if (!checkCart())
+    return;
 
-    // Initialisation d'un tableau permettant de récupérer les id des teddies dans le local storage
-    let products = [];
-    let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
-    console.log(cart);
-    for (let i = 0; i < cart.length; i++) {
-      products.push((cart[i].id))
-    }
-    console.log(products);
+  // Contrôle du formulaire avant envoi cf. confirm.js
+  if (!checkForm())
+    return;
 
-    // Initialisation d'une variable devant comporter les infos contacts attendus par l'api ainsi qu'un array comportant les id des teddies
-    
+  // Initialisation d'un tableau permettant de récupérer les id des teddies dans le local storage
+  let products = [];
+  let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
+  for (let i = 0; i < cart.length; i++) {
+    products.push((cart[i].id))
+  }
 
-    // Envoi de l'order à l'api et redirection vers la page de confirmation
-    /*ajaxPost(
-      "http://localhost:3000/api/teddies/order",
-      order,
-      function(reponse) {
-        let finalOrder = {firstname: JSON.parse(reponse).contact.firstName, id: JSON.parse(reponse).orderId, price: totalToPay};
-        console.log(finalOrder)
-        saveLocalStorage(LABEL_VAR_LOCAL_STORAGE_ORDER, finalOrder);
-        window.location.href = 'confirmation.html?';
-      },
-      true
-    );*/
-    let url = 'http://localhost:3000/api/teddies/order';
-    let order = {
-      contact : {
-      firstName:  document.getElementById('firstname').value,
-      lastName: document.getElementById('lastname').value,
-      email: document.getElementById('email').value,
-      address: document.getElementById('address').value,
-      city: document.getElementById('city').value
-      },
-      products: products
-    };
-
-    retrieveContent(url, order).then(response => {
-      let finalOrder = {firstname: response.contact.firstName, id: response.orderId, price: totalToPay};
-      console.log(finalOrder)
-      saveLocalStorage(LABEL_VAR_LOCAL_STORAGE_ORDER, finalOrder);
-      window.location.href = 'confirmation.html?';
-    });
-  });
-
+  // Envoi de l'order à l'api et redirection vers la page de confirmation
+  let url = 'http://localhost:3000/api/teddies/order';
+  let order = {
+    contact : {
+    firstName:  document.getElementById('firstname').value,
+    lastName: document.getElementById('lastname').value,
+    email: document.getElementById('email').value,
+    address: document.getElementById('address').value,
+    city: document.getElementById('city').value
+    },
+    products: products
+  };
 
   async function retrieveContent(url, order) {
-    console.log(order);
-    
     let result = await fetch(url, {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
@@ -103,6 +76,13 @@ document.querySelector("form").addEventListener("submit", function(e) {
     })
     return result;  
   }
+
+  retrieveContent(url, order).then(response => {
+    let finalOrder = {firstname: response.contact.firstName, id: response.orderId, price: totalToPay};
+    saveLocalStorage(LABEL_VAR_LOCAL_STORAGE_ORDER, finalOrder);
+    window.location.href = 'confirmation.html?';
+  });
+});
 
 
     
