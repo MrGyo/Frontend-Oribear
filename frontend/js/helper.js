@@ -28,6 +28,44 @@ function formatPriceBis(price) {
     return price.replace(".", ",");
 }
 
+//=== FONCTION POUR LE CHOIX DU PRODUIT ===//
+
+// Méthode qui permet de
+function alertUserChoice() {
+    Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Choisissez une couleur et une quantité :)',
+    })
+} 
+
+function confirmChoice() {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-secondary btn-cart',
+          cancelButton: 'btn btn-success btn-index'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Votre teddy est dans le panier',
+        icon: 'success',
+        showCancelButton: true,
+        cancelButtonText: 'Passer ma commande<i class="fas fa-shopping-cart ml-2"></i>',
+        confirmButtonText: 'Un autre teddy ?<i class="fas fa-walking ml-2"></i>',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+            window.location.href = '/';
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+            window.location.href = 'shoppingcart.html';
+        }
+      })
+}
+
 //=== FONCTION POUR LE PANIER ===//
 
 // Méthode qui permet de vérifier si la panier comporte au moins un article
@@ -42,51 +80,27 @@ function checkCart() {
 }
 
 // Méthode qui permet de vider tout le panier de l'utilisateur ---//
-/*function clearCartConfirm() {
-        Swal.fire({
-            title: 'Êtes-vous sûr de vouloir vider votre panier ?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#dc3545',
-            cancelButtonText: 'Annuler',
-            confirmButtonText: 'Vider le panier'
-          }).then((result) => {
-            if (result.value) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Votre panier est vidé !',
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-                clearCart();
-                setTimeout(function(){ window.location.href = '/'; }, 2000);
-            }
-          })
-}*/
-
-
-// Méthode qui permet de vider tout le panier de l'utilisateur ---//
 function clearCartConfirm() {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
+            confirmButton: 'btn btn-secondary btn-confirm-cart',
+            cancelButton: 'btn btn-success btn-cancel-cart'
         },
+        buttonsStyling: false
       })
     swalWithBootstrapButtons.fire({
         title: 'Êtes-vous sûr de vouloir vider votre panier ?',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Vider le panier',
-        cancelButtonText: 'Annuler',
+        confirmButtonText: 'Vider le panier<i class="far fa-frown ml-2""></i>',
+        cancelButtonText: 'Annuler<i class="far fa-smile-beam ml-2""></i>',
         reverseButtons: true
       }).then((result) => {
         if (result.value) {
             swalWithBootstrapButtons.fire(
-                'Deleted!',
+                'Woinnn!',
                 'Votre panier est vidé',
-                'success'
+                'info'
                 )
             clearCart();
             setTimeout(function(){ window.location.href = '/'; }, 2000);
@@ -94,9 +108,9 @@ function clearCartConfirm() {
           result.dismiss === Swal.DismissReason.cancel
         ) {
         swalWithBootstrapButtons.fire(
-            'Cancelled',
+            'Top !',
             'Poursuivez votre commande',
-            'error'
+            'success'
             )
         }
     })

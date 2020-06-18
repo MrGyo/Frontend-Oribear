@@ -76,17 +76,12 @@ const saveToCart = () => {
 
 //=== Ajout d'une fonction qui permet  préparer la sauvegarde à faire dans le localstorage ===//
 const addProductToCart = (colorSelected, quantitySelected) => {
-    // Création de "sweetalerts" rappelant à l'utilisateur l'obigation de choisir une couleur et une quantité (par défaut la quantité = 1)
+    // Appel des méthodes pour le contrôle des choix de l'utilsateur
     if (colorSelected == "" || quantitySelected == "") {
-        Swal.fire("Oops!", "Choisissez une couleur et une quantité :)", "error");
+        alertUserChoice() 
     } else {
-        Swal.fire({
-            icon: 'success',
-            title: 'Votre teddy est dans le panier !',
-            showConfirmButton: false,
-            timer: 2500,
-        });
-
+        confirmChoice()
+    
         // Création d'un objet regroupant l'ensemble des informations pour le setitem au local storage via la méthode addToCart
         let productToAdd = {id: product._id, name: product.name, color: colorSelected, quantity : quantitySelected, price : product.price};
 

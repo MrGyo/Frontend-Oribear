@@ -57,6 +57,10 @@ h2 {
   color: white;
 }
 
+.far {
+  color: white;
+}
+
 .fa {
   color: white;
 }
@@ -227,6 +231,30 @@ footer {
   font-family: 'Monserrat', sans-serif;
   font-size: 1.8em;
 }
+
+/* PERSONNALISATION DES BOUTONS SWALFIRE */
+
+.btn-cart {
+  width: 220px;
+  margin-left: 2%;
+}
+
+.btn-index {
+  width: 220px;
+  margin-right: 2%;
+}
+
+.btn-cancel-cart {
+  width: 200px;
+  margin-right: 2%;
+}
+
+.btn-confirm-cart {
+  width: 200px;
+  margin-left: 2%;
+}
+
+
 
 /* MEDIAS QUERIES */
 
