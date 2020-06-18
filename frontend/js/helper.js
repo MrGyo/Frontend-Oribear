@@ -32,18 +32,29 @@ function formatPriceBis(price) {
 
 // Méthode qui permet de
 function alertUserChoice() {
-    Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'Choisissez une couleur et une quantité :)',
-    })
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-secondary btn-ok',
+        },
+        buttonsStyling: false
+      })
+      swalWithBootstrapButtons.fire({
+        title: 'Oops!',
+        text: 'Choisissez une couleur et une quantité :)',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      }).then((result) => {
+        if (result.value) {
+          return;
+        }
+      })
 } 
 
 function confirmChoice() {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-secondary btn-cart',
-          cancelButton: 'btn btn-success btn-index'
+          confirmButton: 'btn btn-primary btn-cart',
+          cancelButton: 'btn btn-secondary btn-index'
         },
         buttonsStyling: false
       })
@@ -52,16 +63,16 @@ function confirmChoice() {
         title: 'Votre teddy est dans le panier',
         icon: 'success',
         showCancelButton: true,
-        cancelButtonText: 'Passer ma commande<i class="fas fa-shopping-cart ml-2"></i>',
-        confirmButtonText: 'Un autre teddy ?<i class="fas fa-walking ml-2"></i>',
+        cancelButtonText: '<i class="fas fa-walking mr-2"></i>Un autre teddy ?',
+        confirmButtonText: '<i class="fas fa-shopping-cart mr-2"></i>Passer ma commande',
         reverseButtons: true
       }).then((result) => {
         if (result.value) {
-            window.location.href = '/';
+            window.location.href = 'shoppingcart.html';
         } else if (
           result.dismiss === Swal.DismissReason.cancel
         ) {
-            window.location.href = 'shoppingcart.html';
+            window.location.href = '/';
         }
       })
 }
@@ -72,8 +83,22 @@ function confirmChoice() {
 function checkCart() {
     let checkCart = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
     if (checkCart == null) {
-        Swal.fire("Oops", "Votre panier est vide ! :)", "error");
-        return false;
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-secondary btn-ok',
+            },
+            buttonsStyling: false
+          })
+          swalWithBootstrapButtons.fire({
+            title: 'Oops!',
+            text: 'Choisissez une couleur et une quantité :)',
+            icon: 'error',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.value) {
+              return;
+            }
+          })
     } else {
         return true;
     }
@@ -84,7 +109,7 @@ function clearCartConfirm() {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-secondary btn-confirm-cart',
-            cancelButton: 'btn btn-success btn-cancel-cart'
+            cancelButton: 'btn btn-primary btn-cancel-cart'
         },
         buttonsStyling: false
       })
@@ -92,26 +117,23 @@ function clearCartConfirm() {
         title: 'Êtes-vous sûr de vouloir vider votre panier ?',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Vider le panier<i class="far fa-frown ml-2""></i>',
-        cancelButtonText: 'Annuler<i class="far fa-smile-beam ml-2""></i>',
+        confirmButtonText: '<i class="far fa-frown mr-2""></i>Vider le panier',
+        cancelButtonText: '<i class="far fa-smile-beam mr-2""></i>Annuler',
         reverseButtons: true
       }).then((result) => {
         if (result.value) {
-            swalWithBootstrapButtons.fire(
-                'Woinnn!',
-                'Votre panier est vidé',
-                'info'
-                )
+            swalWithBootstrapButtons.fire({
+                title: 'Woinnn!',
+                text: 'Votre panier est vide :(',
+                icon: 'info',
+                showConfirmButton: false,
+            })
             clearCart();
             setTimeout(function(){ window.location.href = '/'; }, 2000);
         } else if (
           result.dismiss === Swal.DismissReason.cancel
         ) {
-        swalWithBootstrapButtons.fire(
-            'Top !',
-            'Poursuivez votre commande',
-            'success'
-            )
+            return;
         }
     })
 }

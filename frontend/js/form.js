@@ -13,7 +13,22 @@ function checkFieldIdentity(id, textErreur){
     let fieldToControl = document.getElementById(id).value;
     let regexFieldToControl =  /^[A-Za-zéèàêë-]+$/;
     if (!regexFieldToControl .test(fieldToControl) || fieldToControl.length <= 1) {
-        Swal.fire("Oops", textErreur, "error");
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-secondary btn-ok',
+            },
+            buttonsStyling: false
+          })
+          swalWithBootstrapButtons.fire({
+            title: 'Oops!',
+            text: textErreur,
+            icon: 'error',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.value) {
+              return;
+            }
+          })
         return false;
     }
     return true;
@@ -23,7 +38,22 @@ function checkFieldEmail(id, textErreur){
     let emailToControl = document.getElementById(id).value;
     let regexEmailToControl = /.+@.+\..+/;
     if (!regexEmailToControl.test(emailToControl)) {
-        Swal.fire("Oops", textErreur, "error");
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-secondary btn-ok',
+            },
+            buttonsStyling: false
+          })
+          swalWithBootstrapButtons.fire({
+            title: 'Oops!',
+            text: textErreur,
+            icon: 'error',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.value) {
+              return;
+            }
+          })
         return false;
     }
     return true;
@@ -32,7 +62,22 @@ function checkFieldEmail(id, textErreur){
 function checkFieldAddress(id, textErreur){
     let addressToControl = document.getElementById(id).value;
     if (addressToControl == "") {
-        Swal.fire("Oops", textErreur, "error");
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-secondary btn-ok',
+            },
+            buttonsStyling: false
+          })
+          swalWithBootstrapButtons.fire({
+            title: 'Oops!',
+            text: textErreur,
+            icon: 'error',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.value) {
+              return;
+            }
+          })
         return false;
     }
     return true;
@@ -42,7 +87,22 @@ function checkFieldZipCode(id, textErreur){
     let zipCodeToControl = document.getElementById(id).value;
     let regexZipCodeToControl = /^[0-9]*$/;
     if (!regexZipCodeToControl.test(zipCodeToControl) || zipCodeToControl.length < 5 || zipCodeToControl.length > 5) {
-        Swal.fire("Oops", textErreur, "error");
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-secondary btn-ok',
+            },
+            buttonsStyling: false
+          })
+          swalWithBootstrapButtons.fire({
+            title: 'Oops!',
+            text: textErreur,
+            icon: 'error',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.value) {
+              return;
+            }
+          })
         return false;
     }
     return true;

@@ -37,7 +37,7 @@ const createArticleHtml = (teddy) => {
                     '<div class="card-body" id="product-details">' +
                         '<h5 class="card-title" id="name">' + teddy.name + '</h5>' +
                         '<p class="card-text-1">' + teddy.description + '</p>' +
-                        '<p class="card-text-2" id="price">Prix: <span style="color:#dc3545;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
+                        '<p class="card-text-2" id="price">Prix: <span style="color:#dd3e89;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
                                 '<label class="input-group-text" style="width:100px" for="inputGroupSelect01">Couleur</label>' +
@@ -57,8 +57,8 @@ const createArticleHtml = (teddy) => {
                             '</select>' +
                         '</div>' +
                         '<div class="d-flex justify-content-between">' +
-                        '<a href="#" class="btn btn-success mt-1" onclick="saveToCart()">Ajouter au panier<i class="fas fa-shopping-cart ml-2"></i></a>' +
-                        '<a href="../index.html" class="btn btn-secondary mt-1">Retour à l\'accueil<i class="fas fa-undo-alt ml-2"></i></a>' +
+                        '<a href="../index.html" class="btn btn-secondary mt-1"><i class="fas fa-undo-alt mr-2"></i>Retour à l\'accueil</a>' +
+                        '<a href="#" class="btn btn-success mt-1" onclick="saveToCart()"><i class="fas fa-shopping-cart mr-2"></i>Ajouter au panier</a>' +
                         '</div>' +
                     '</div>' + 
                 '</div>' +

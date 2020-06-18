@@ -47,6 +47,8 @@ h2 {
   right: 8px;
   /*padding: 5px 10px;*/
   font-size: 0.5em;
+  background-color: #dd3e89!important;
+  border-color: #dd3e89!important;
 }
 
 .btn {
@@ -122,8 +124,8 @@ footer {
 }
 
 .know-more:hover {
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #dd3e89!important;
+  border-color: #dd3e89!important;
   
 }
 
@@ -161,6 +163,21 @@ footer {
   transition-property: transform;
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
+  }
+
+  .btn-select {
+    background-color: #dd3e89!important;
+    border-color: #dd3e89!important;
+    width: 120px;
+  }
+  
+  .btn-select:hover {
+    background-color: #c43f7e!important;
+    border-color: #c43f7e!important;
+  }
+
+  .btn-ok {
+    width: 100px;
   }
 
 /*-- shoppingcart.html --*/
@@ -202,13 +219,13 @@ footer {
 }
 
 #total {
-  background-color: #dc3545;
+  background-color: #dd3e89;
   color: white;
   font-weight: bold;
 }
 
 #total-value {
-  background-color: #dc3545;
+  background-color: #dd3e89;
   color: white;
   font-weight: bold;
 }
@@ -232,11 +249,28 @@ footer {
   font-size: 1.8em;
 }
 
+.btn-send {
+  background-color: #dd3e89!important;
+  border-color: #dd3e89!important;
+}
+
+.btn-send:hover {
+  background-color: #c43f7e!important;
+  border-color: #c43f7e!important;
+}
+
 /* PERSONNALISATION DES BOUTONS SWALFIRE */
 
 .btn-cart {
   width: 220px;
   margin-left: 2%;
+  background-color: #dd3e89!important;
+  border-color: #dd3e89!important;
+}
+
+.btn-cart:hover {
+  background-color: #c43f7e!important;
+  border-color: #c43f7e!important;
 }
 
 .btn-index {
@@ -247,6 +281,13 @@ footer {
 .btn-cancel-cart {
   width: 200px;
   margin-right: 2%;
+  background-color: #dd3e89!important;
+  border-color: #dd3e89!important;
+}
+
+.btn-cancel-cart:hover {
+  background-color: #c43f7e!important;
+  border-color: #c43f7e!important;
 }
 
 .btn-confirm-cart {
