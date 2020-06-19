@@ -37,7 +37,7 @@ const createArticleHtml = (teddy) => {
                     '<div class="card-body" id="product-details">' +
                         '<h5 class="card-title" id="name">' + teddy.name + '</h5>' +
                         '<p class="card-text-1">' + teddy.description + '</p>' +
-                        '<p class="card-text-2" id="price">Prix: <span style="color:#dd3e89;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
+                        '<p class="card-text-2" id="product_price">Prix: <span style="color:#dd3e89;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
                                 '<label class="input-group-text" style="width:100px" for="inputGroupSelect01">Couleur</label>' +
@@ -56,9 +56,9 @@ const createArticleHtml = (teddy) => {
                                 '<option class="quantity" value="5">5</option>' +
                             '</select>' +
                         '</div>' +
-                        '<div class="d-flex justify-content-between">' +
-                        '<a href="../index.html" class="btn btn-secondary mt-1"><i class="fas fa-undo-alt mr-2"></i>Retour à l\'accueil</a>' +
-                        '<a href="#" class="btn btn-success mt-1" onclick="saveToCart()"><i class="fas fa-shopping-cart mr-2"></i>Ajouter au panier</a>' +
+                        '<div class="d-flex flex-column justify-content-sm-between flex-sm-row">' +
+                            '<a href="../index.html" class="btn btn-secondary mt-1"><i class="fas fa-undo-alt mr-2"></i>Retour à l\'accueil</a>' +
+                            '<a href="#" class="btn btn-success mt-1" onclick="saveToCart()"><i class="fas fa-shopping-cart mr-2"></i>Ajouter au panier</a>' +
                         '</div>' +
                     '</div>' + 
                 '</div>' +

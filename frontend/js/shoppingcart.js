@@ -29,8 +29,8 @@ function createArticleHtml(product) {
     return  '<tr>' +
             '<td>' + product.name + '</td>' +
             '<td>' + product.color + '</td>' +
-            '<td>' + product.quantity + '</td>' +
-            '<td class="price"><span style="color:#dd3e89;">' + product.totalPricePerProduct + '&euro;</span></td>' +
+            '<td class="text-center">' + product.quantity + '</td>' +
+            '<td class="price text-center"><span style="color:#dd3e89;">' + product.totalPricePerProduct + '&euro;</span></td>' +
             '</tr>';
         }
 

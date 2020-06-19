@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-12 d-flex justify-content-between align-items-center">
                             <a href="../index.html" title="Accédez à l'accueil"><p class="mb-0 ml-5 name" style="width:200px">Oribear</p></a>
-                            <div><img src="../images/teddy-logo-4.png" alt="Logo Oribear"></div>
+                            <div class="d-none d-lg-block"><img src="../images/teddy-logo-4.png" alt="Logo Oribear"></div>
                             <a href="#" title="Accédez au caddy"><div class="shopping-cart mr-5 text-right" style="width:200px"><i class="fas fa-shopping-cart mr-2"></i><span class="badge badge-pill badge-danger mr-5" id="badge">0</span></div></a>
                         </div>
                     </div>
@@ -36,20 +36,20 @@
                 <div class="row" id="cart-container">
                     <div class="col-12 mb-4">
                         <div class="col-12 mb-4">
-                            <table class="table">
+                            <table class="table table-sm">
                                 <thead class="thead"> 
                                     <tr>
                                     <th scope="col">Nom</th>
                                     <th scope="col">Couleur</th>
-                                    <th scope="col">Quantité</th>
-                                    <th scope="col">Prix</th>
+                                    <th scope="col" class="text-center">Quantité</th>
+                                    <th scope="col" class="text-center">Prix</th>
                                     </tr>
                                 </thead>
                                 <tbody class="cart-table" id="cart-content">
                                 </tbody>
                                 <tr> 
                                     <th colspan="3" id="total">Total</th>
-                                    <td id="total-value"></td>
+                                    <td class="text-center" id="total-value"></td>
                                 </tr>
                             </table>
                         </div>

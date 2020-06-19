@@ -301,6 +301,10 @@ footer {
 
 @media (max-width: 575.98px) {
 
+  .btn-select {
+    width: 100%;
+  }
+
   .shopping-cart {
     margin-right: 0!important;
     font-size: 2em;
@@ -353,7 +357,7 @@ footer {
     font-size: 1.5em;
   }
 
-  #price {
+  #order_price {
     font-size: 1.5em;
   }
 
@@ -364,6 +368,18 @@ footer {
   }
   
   .btn-index {
+    width: 210px;
+    margin-right: 0;
+    margin-top: 2%;
+  }
+
+  .btn-confirm-cart {
+    width: 210px;
+    margin-left: 0;
+    margin-top: 2%;
+  }
+  
+  .btn-cancel-cart {
     width: 210px;
     margin-right: 0;
     margin-top: 2%;

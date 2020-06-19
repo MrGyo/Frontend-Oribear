@@ -107,36 +107,56 @@ function checkCart() {
 
 // Méthode qui permet de vider tout le panier de l'utilisateur ---//
 function clearCartConfirm() {
+  let checkCart = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
+  if (checkCart == null) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-            confirmButton: 'btn btn-secondary btn-confirm-cart',
-            cancelButton: 'btn btn-primary btn-cancel-cart'
+          confirmButton: 'btn btn-secondary btn-ok',
         },
         buttonsStyling: false
       })
-    swalWithBootstrapButtons.fire({
-        title: 'Êtes-vous sûr de vouloir vider votre panier ?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: '<i class="far fa-frown mr-2""></i>Vider le panier',
-        cancelButtonText: '<i class="far fa-smile-beam mr-2""></i>Annuler',
-        reverseButtons: true
+      swalWithBootstrapButtons.fire({
+        title: 'Oops!',
+        text: 'Votre panier est vide :)',
+        icon: 'error',
+        confirmButtonText: 'OK',
       }).then((result) => {
         if (result.value) {
-            swalWithBootstrapButtons.fire({
-                title: 'Woinnn!',
-                text: 'Votre panier est vide :(',
-                icon: 'info',
-                showConfirmButton: false,
-            })
-            clearCart();
-            setTimeout(function(){ window.location.href = '/'; }, 2000);
-        } else if (
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-            return;
+          return;
         }
-    })
+      })
+  } else {
+      const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+              confirmButton: 'btn btn-secondary btn-confirm-cart',
+              cancelButton: 'btn btn-primary btn-cancel-cart'
+          },
+          buttonsStyling: false
+        })
+      swalWithBootstrapButtons.fire({
+          title: 'Prêt à abandonner votre teddy ?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: '<i class="far fa-frown mr-2""></i>Vider le panier',
+          cancelButtonText: '<i class="far fa-smile-beam mr-2""></i>Annuler',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.value) {
+              swalWithBootstrapButtons.fire({
+                  title: 'Snif!',
+                  text: 'Votre teddy est orphelin :(',
+                  icon: 'info',
+                  showConfirmButton: false,
+              })
+              clearCart();
+              setTimeout(function(){ window.location.href = '/'; }, 2500);
+          } else if (
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+              return;
+          }
+      })
+  }
 }
 
 function clearCart(){
