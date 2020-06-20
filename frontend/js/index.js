@@ -20,7 +20,7 @@ retrieveContent(url).then(teddies => {
 
 //=== Création d'une méthode pour ajouter les fiches produits sur la page index.html ===//
 const createArticleHtml = (teddy) => {
-    return  '<div class="col-12 mb-3">' +
+    return  '<div class="col-lg-8 offset-lg-2 mb-3">' +
                 '<div class="card mb-4" id="'+ teddy._id + '">' +
                     '<img src="'+ teddy.imageUrl +'" class="w-100">' +
                     '<div class="card-body">' +

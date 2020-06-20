@@ -31,7 +31,7 @@ const createArticleHtml = (teddy) => {
         colorString += '<option value="' + color + '">' + color + '</option>';
         };
 
-    return  '<div class="col-12 mb-4">' +
+    return  '<div class="col-lg-8 offset-lg-2 mb-4">' +
                 '<div class="card mb-5" id="'+ teddy._id + '">' +
                     '<img src="'+ teddy.imageUrl +'" class="w-100">' +
                     '<div class="card-body" id="product-details">' +

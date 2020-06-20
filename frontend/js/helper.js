@@ -73,7 +73,7 @@ function confirmChoice() {
         } else if (
           result.dismiss === Swal.DismissReason.cancel
         ) {
-            window.location.href = '/';
+            window.location.href = '../index.html';
         }
       })
 }
@@ -138,8 +138,8 @@ function clearCartConfirm() {
           icon: 'warning',
           showCancelButton: true,
           confirmButtonText: '<i class="far fa-frown mr-2""></i>Vider le panier',
-          cancelButtonText: '<i class="far fa-smile-beam mr-2""></i>Annuler',
-          reverseButtons: true
+          cancelButtonText: '<i class="far fa-smile-beam mr-2""></i>Annuler', 
+          reverseButtons: false
         }).then((result) => {
           if (result.value) {
               swalWithBootstrapButtons.fire({
@@ -149,7 +149,7 @@ function clearCartConfirm() {
                   showConfirmButton: false,
               })
               clearCart();
-              setTimeout(function(){ window.location.href = '/'; }, 2500);
+              setTimeout(function(){ window.location.href = '../index.html'; }, 2000);
           } else if (
             result.dismiss === Swal.DismissReason.cancel
           ) {

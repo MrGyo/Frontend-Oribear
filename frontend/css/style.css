@@ -4,7 +4,10 @@ html {
 }
 
 body {
-  background: rgb(212, 185, 162);
+  background: #d4c5b8;
+  /*background: #d4b9a2;*/
+  /*background: #c9bfb2;*/
+  /*background: #d4c0ad;*/
 }
 
 a:link {
@@ -280,7 +283,7 @@ footer {
 
 .btn-cancel-cart {
   width: 200px;
-  margin-right: 2%;
+  margin-left: 2%;
   background-color: #dd3e89!important;
   border-color: #dd3e89!important;
 }
@@ -292,10 +295,8 @@ footer {
 
 .btn-confirm-cart {
   width: 200px;
-  margin-left: 2%;
+  margin-right: 2%;
 }
-
-
 
 /* MEDIAS QUERIES */
 
@@ -333,7 +334,7 @@ footer {
 
 
   h2 {
-    font-size: 2em;
+    font-size: 1.9em;
     margin-top: 2%!important;
   }
 
@@ -375,14 +376,22 @@ footer {
 
   .btn-confirm-cart {
     width: 210px;
-    margin-left: 0;
+    margin-right: 0;
     margin-top: 2%;
   }
   
   .btn-cancel-cart {
     width: 210px;
-    margin-right: 0;
+    margin-left: 0;
     margin-top: 2%;
+  }
+
+  .join-us {
+    font-size: 0.7em;
+  }
+
+  .copyright {
+    font-size: 1.2em;
   }
   
   
