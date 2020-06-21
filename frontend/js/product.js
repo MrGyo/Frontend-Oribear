@@ -71,11 +71,11 @@ const saveToCart = () => {
     let colorSelected = document.getElementById("inputGroupSelect01").value;
     let quantitySelected = document.getElementById("options").value;
     // Utilisation de la méthode sur les options choisies et la création d'un objet regroupant les infos à sauvegarder
-    addProductToCart(colorSelected, quantitySelected);
+    productSelected(colorSelected, quantitySelected);
 }
 
 //=== Ajout d'une fonction qui permet  préparer la sauvegarde à faire dans le localstorage ===//
-const addProductToCart = (colorSelected, quantitySelected) => {
+const productSelected = (colorSelected, quantitySelected) => {
     // Appel des méthodes pour le contrôle des choix de l'utilsateur
     if (colorSelected == "") {
         alertUserChoice() 
@@ -91,16 +91,15 @@ const addProductToCart = (colorSelected, quantitySelected) => {
         // Recours à la méthode updateBadge pour mettre à jour le nombre de produits ajoutés
         updateBadge();
 
-        // Recours à la méthode refreshBadge pour un refresh du badge sur le site au moment du clic "sélectionner" (cf. méthode dans helper.js ligne 33)
+        // Recours à la méthode refreshBadge pour un refresh du badge sur le site au moment du clic "sélectionner"
         refreshBadge();
     }; 
 }
 
 //=== Ajout d'une fonction addToCart qui permet de faire un setitem du produit au localstorage ===//
-function addToCart(productToAdd) {
-    // Initialisation du panier, on vérifie si certaines infos figurent déjà au localstorage, si oui parse des données
+const addToCart = (productToAdd) => {
 
-    //let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
+    // Initialisation du panier, on vérifie si certaines infos figurent déjà au localstorage, si oui parse des données
     let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
 
     // Déclaration d'une variable article qui permet de vérifier si un même article est déjà ajouté et d'assurer l'addition des quantités
@@ -110,17 +109,14 @@ function addToCart(productToAdd) {
     } else {
         cart.push(productToAdd)
     }
-    // Une fois la condition ci-dessus vérifiée un setitem permet d'envoyer le nouveau produit cliqué au local storage
 
-    //localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, JSON.stringify(cart));
+    // Une fois la condition ci-dessus vérifiée un setitem permet d'envoyer le nouveau produit cliqué au local storage
     saveLocalStorage(LABEL_VAR_LOCAL_STORAGE, cart)
 }
 
 //=== Méthode qui permet de faire un setitem de la quantité dédiée au localstorage du badge ===//
 function updateBadge() {
     // Initialisation du panier sur la base de ce qui se trouve au local storage
-
-    //let cart = (localStorage.getItem(LABEL_VAR_LOCAL_STORAGE) == null) ? [] : JSON.parse(localStorage.getItem(LABEL_VAR_LOCAL_STORAGE));
     let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
 
     let quantities = 0;
@@ -128,6 +124,7 @@ function updateBadge() {
     for (let product of cart) {
         quantities += parseInt(product.quantity)
     }
+
     // Une fois la boucle réalisée un setitem permet l'ajout de la quantité des produits au panier au niveau du badge
     localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_BADGE, quantities);
 }
