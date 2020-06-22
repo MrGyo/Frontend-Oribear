@@ -12,13 +12,13 @@ let totalToPay = 0
 products.forEach(function(product) {
         let container = document.getElementById("cart-content");
         // Initialisation d'une variable pour procéder à la multiplication entre la quantité et le prix par produit (calcul pour chacune des lignes du tableau)
-        let totalPricePerProduct = formatPrice(product.quantity * product.price);
+        let totalPricePerProduct = formatPriceProduct(product.quantity * product.price);
         product.totalPricePerProduct = totalPricePerProduct;
         container.innerHTML += createArticleHtml(product);
         // totalToPay, initialisé en amont à 0, additionne les montants par ligne de produit
         totalToPay += parseInt(totalPricePerProduct);
         let containerTotal = document.getElementById("total-value");
-        containerTotal.innerHTML = formatPriceBis(totalToPay.toFixed(2)) + '<span>&euro;</span>';
+        containerTotal.innerHTML = formatPriceTotalProduct(totalToPay.toFixed(2)) + '<span>&euro;</span>';
     });
 
 //=== Création d'une méthode pour implémenter le tableau récapitulatif sur la page shoppingcart.html ===//

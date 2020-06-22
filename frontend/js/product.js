@@ -37,7 +37,7 @@ const createArticleHtml = (teddy) => {
                     '<div class="card-body" id="product-details">' +
                         '<h5 class="card-title" id="name">' + teddy.name + '</h5>' +
                         '<p class="card-text-1">' + teddy.description + '</p>' +
-                        '<p class="card-text-2" id="product_price">Prix: <span style="color:#dd3e89;">' + formatPrice(teddy.price) + '&euro;</span></p>' +
+                        '<p class="card-text-2" id="product_price">Prix: <span style="color:#dd3e89;">' + formatPriceProduct(teddy.price) + '&euro;</span></p>' +
                         '<div class="input-group mb-3">' + 
                             '<div class="input-group-prepend">' +
                                 '<label class="input-group-text" style="width:100px" for="inputGroupSelect01">Couleur</label>' +
@@ -107,18 +107,7 @@ const addToCart = (productToAdd) => {
     saveLocalStorage(LABEL_VAR_LOCAL_STORAGE, cart)
 }
 
-//=== Méthode qui permet de faire un setitem de la quantité dédiée au localstorage du badge ===//
-function updateBadge() {
-    // Initialisation du panier sur la base de ce qui se trouve au local storage
-    let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
-    let quantities = 0;
-    // Pour chaque produit présent au panier la quantité s'additionne à celle comptabilisée au moment de l'ajout
-    for (let product of cart) {
-        quantities += parseInt(product.quantity)
-    }
-    // Une fois la boucle réalisée un setitem permet l'ajout de la quantité des produits au panier au niveau du badge
-    localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_BADGE, quantities);
-}
+
 
 
 

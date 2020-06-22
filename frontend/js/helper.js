@@ -17,14 +17,14 @@ function loadLocalStorage(id){
 
 //=== FONCTION POUR LE FORMAT DU PRIX ===//
 
-// fonction pour le format du prix de la page produit
-function formatPrice(price) {
+//  change le format du prix des produits
+function formatPriceProduct(price) {
     let newPrice = price / 100;
     newPrice = newPrice.toFixed(2);
     return newPrice.replace(".", ",");
 }
-// fonction pour le format du prix de la page panier
-function formatPriceBis(price) {
+// change le format du prix du total à payer
+function formatPriceTotalProduct(price) {
     return price.replace(".", ",");
 }
 
@@ -164,9 +164,22 @@ function clearCart(){
     if (cartToClear != null) {
         localStorage.clear(LABEL_VAR_LOCAL_STORAGE);
     } 
-
 }
+
 //=== FONCTION POUR LE REFRESH DU BADGE ===//
+
+//=== Méthode qui permet de faire un setitem de la quantité dédiée au localstorage du badge ===//
+function updateBadge() {
+  // Initialisation du panier sur la base de ce qui se trouve au local storage
+  let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
+  let quantities = 0;
+  // Pour chaque produit présent au panier la quantité s'additionne à celle comptabilisée au moment de l'ajout
+  for (let product of cart) {
+      quantities += parseInt(product.quantity)
+  }
+  // Une fois la boucle réalisée un setitem permet l'ajout de la quantité des produits au panier au niveau du badge
+  localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_BADGE, quantities);
+}
 
 // Méthode qui permet de faire un refresh du badge après ajout d'un produit
 function refreshBadge() {
