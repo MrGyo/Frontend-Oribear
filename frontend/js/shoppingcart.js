@@ -11,13 +11,10 @@ let totalToPay = 0
 //=== Création d'une boucle pour ajouter chaque produit dans le tableau récapitulatif ===//
 products.forEach(function(product) {
         let container = document.getElementById("cart-content");
-
         // Initialisation d'une variable pour procéder à la multiplication entre la quantité et le prix par produit (calcul pour chacune des lignes du tableau)
         let totalPricePerProduct = formatPrice(product.quantity * product.price);
         product.totalPricePerProduct = totalPricePerProduct;
-
         container.innerHTML += createArticleHtml(product);
-
         // totalToPay, initialisé en amont à 0, additionne les montants par ligne de produit
         totalToPay += parseInt(totalPricePerProduct);
         let containerTotal = document.getElementById("total-value");
@@ -37,22 +34,18 @@ function createArticleHtml(product) {
 //=== PARTIE DEDIEE A LA VALIDATION DE LA COMMANDE ===//
 document.querySelector("form").addEventListener("submit", function(e) {
   e.preventDefault();
-
   // Contrôle du panier si vide cf. helper.js
   if (!checkCart())
     return;
-
   // Contrôle du formulaire avant envoi cf. confirm.js
   if (!checkForm())
     return;
-
   // Initialisation d'un tableau permettant de récupérer les id des teddies dans le local storage
   let products = [];
   let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
   for (let i = 0; i < cart.length; i++) {
     products.push((cart[i].id))
   }
-
   // Envoi de l'order à l'api et redirection vers la page de confirmation
   let url = 'http://localhost:3000/api/teddies/order';
   let order = {

@@ -81,16 +81,12 @@ const productSelected = (colorSelected, quantitySelected) => {
         alertUserChoice() 
     } else {
         confirmChoice()
-    
         // Création d'un objet regroupant l'ensemble des informations pour le setitem au local storage via la méthode addToCart
         let productToAdd = {id: product._id, name: product.name, color: colorSelected, quantity : quantitySelected, price : product.price};
-
         // Utilisation de la méthode addToCart pour sauvegarder les produits sélectionner
         addToCart(productToAdd);
-
         // Recours à la méthode updateBadge pour mettre à jour le nombre de produits ajoutés
         updateBadge();
-
         // Recours à la méthode refreshBadge pour un refresh du badge sur le site au moment du clic "sélectionner"
         refreshBadge();
     }; 
@@ -98,10 +94,8 @@ const productSelected = (colorSelected, quantitySelected) => {
 
 //=== Ajout d'une fonction addToCart qui permet de faire un setitem du produit au localstorage ===//
 const addToCart = (productToAdd) => {
-
-    // Initialisation du panier, on vérifie si certaines infos figurent déjà au localstorage, si oui parse des données
+    // On charge le contenu du local storage
     let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
-
     // Déclaration d'une variable article qui permet de vérifier si un même article est déjà ajouté et d'assurer l'addition des quantités
     let article = cart.find( element => element.id === productToAdd.id && element.color === productToAdd.color);
     if (article !== undefined) {
@@ -109,7 +103,6 @@ const addToCart = (productToAdd) => {
     } else {
         cart.push(productToAdd)
     }
-
     // Une fois la condition ci-dessus vérifiée un setitem permet d'envoyer le nouveau produit cliqué au local storage
     saveLocalStorage(LABEL_VAR_LOCAL_STORAGE, cart)
 }
@@ -118,13 +111,11 @@ const addToCart = (productToAdd) => {
 function updateBadge() {
     // Initialisation du panier sur la base de ce qui se trouve au local storage
     let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
-
     let quantities = 0;
     // Pour chaque produit présent au panier la quantité s'additionne à celle comptabilisée au moment de l'ajout
     for (let product of cart) {
         quantities += parseInt(product.quantity)
     }
-
     // Une fois la boucle réalisée un setitem permet l'ajout de la quantité des produits au panier au niveau du badge
     localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_BADGE, quantities);
 }
