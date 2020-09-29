@@ -1,22 +1,35 @@
-# p5
-Construisez un site e-commerce
+# OC - Parcours Développeur Web - Projet 5
 
-Livrables
-  Le lien vers un dépôt Git public contenant le code de l'application web.
-○   Le mentor et l'évaluateur doivent être en mesure de cloner le référentiel, d'ouvrir index.html, d'utiliser l'application entièrement opérationnelle et de confirmer que n’importe quel input utilisateur est validé.
+## Construisez un site e-commerce
 
-  Un plan de tests.
-Pour faciliter votre passage au jury, déposez sur la plateforme, dans un dossier nommé “P5_nom_prenom”, tous les livrables du projet. Chaque livrable doit être nommé avec le numéro du projet et selon l'ordre dans lequel il apparaît, par exemple “P5_01_lienGithub”, “P5_02_plantests”, et ainsi de suite.
+Son credo ? Se démarquer des grands site e-commerce comme Amazon en créant des applications thématiques ne vendant qu’un seul groupe de produits. Il y a par exemple Oribook pour les livres ou Oritextil pour les vêtements. Vos compétences en développement web et votre personnalité ont plu à Paul, le fondateur de l’entreprise. Dans un premier temps, Paul souhaite créer un premier MVP pour démontrer le fonctionnement de ses applications à ses investisseurs. L’équipe est constituée de Jeanne, développeuse back-end travaillant sur les API et vous, pour la partie front-end.
 
-Soutenance
-La soutenance, d’une durée maximum de 30 minutes, se déroulera en deux parties :
+## Techonologies utilisées
 
-Partie 1 – 20 minutes : Simulation d'une réunion professionnelle.
+* HTML5
+* CSS3
+* JAVASCRIPT
 
-L’évaluateur jouera le rôle de Paul, le fondateur d’Orinoco (il pourra vous interrompre pour vous poser des questions).
+## Documentation
 
-[~ 20 minutes] Vous réaliserez une présentation de votre application. 
-Partie 2 – 10 minutes : Retour sur la soutenance
+Liens vers les spécifications : [ICI](https://github.com/MrGyo/p5/blob/master/frontend/specs/P5_Spe%CC%81cifications%20fonctionnelles%20Orinoco_Vdef.pdf)
 
-Échange de questions/réponses : l’évaluateur pourra revenir sur certains points pour vous questionner sur vos choix.
-L’évaluateur vous fera un retour sur votre prestation en soutenance.
+## Compétences évaluées
+
+* Valider des données issues de sources externes
+* Gérer des événements JavaScript
+* Créer un plan de test pour une application
+* Interagir avec un web service avec JavaScript
+
+## Résultats
+
+Dans le cadre de ce projet, seule la partie frontend du site a été réalisée [ICI](http://aguillo.activity-net.com/oc/oribear/index.html) ainsi qu'un plan de tests disponible [ICI](https://github.com/MrGyo/p5/blob/master/frontend/mapping/plan_tests_3.xlsx).
+
+Le backend, fourni par OpenClassrooms, est disponible [ICI](https://github.com/OpenClassrooms-Student-Center/JWDP5).
+Il est donc indipensable de cloner ce repository afin que le site fonctionne correctement. 
+Dans le terminal :  
+```
+cd JWDP5
+npm install
+node server
+```
