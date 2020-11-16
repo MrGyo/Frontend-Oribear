@@ -25,11 +25,10 @@ Liens vers les spécifications : [ICI](https://github.com/MrGyo/p5/blob/master/f
 
 Dans le cadre de ce projet, seule la partie frontend du site a été réalisée [ICI](http://aguillo.activity-net.com/oc/oribear/index.html) ainsi qu'un plan de tests disponible [ICI](https://github.com/MrGyo/p5/blob/master/frontend/mapping/plan_tests_3.xlsx).
 
-Le backend, fourni par OpenClassrooms, est disponible [ICI](https://github.com/OpenClassrooms-Student-Center/JWDP5).
-Il est donc indipensable de cloner ce repository afin que le site fonctionne correctement. 
-Dans le terminal :  
+Le backend a été produit par OpenClassrooms.
+Concernant le backend, les commandes à suivre sont les suivantes :  
 ```
 cd JWDP5
 npm install
-node server
+nodemon server
 ```
