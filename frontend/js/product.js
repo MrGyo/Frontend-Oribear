@@ -4,7 +4,7 @@ refreshBadge()
 //=== Variable permettant de récupérer l'id dans l'adresse URL de la page produit ===//
 const params = new URLSearchParams(window.location.search);
 
-//=== Variable qui permet de d'utilser les infos récupérées de l'API ===//
+//=== Variable qui permet d'utilser les infos récupérées de l'API : fiche du produit sélectionné ===//
 let product = null;
 
 //=== Récupération du produit ciblé (grâce à l'ajout de l'id produit) ===//
@@ -12,15 +12,18 @@ let url = 'http://localhost:3000/api/teddies/' + params.get("id");
 
 async function retrieveContent(url){
     let result = await fetch(url).then(response => {
+        console.log(response)
         return response.json()
     })
+    console.log(result)
     return result;  
 }
 
-retrieveContent(url).then(productSelected => {
+retrieveContent(url).then(teddy => {
         let container = document.getElementById("product-container");
-        container.innerHTML = createArticleHtml(productSelected);
-        product = productSelected;
+        container.innerHTML = createArticleHtml(teddy);
+        product = teddy;
+        console.log(product);
 });
 
 //=== Création d'une méthode pour implémenter la fiche produit ciblée sur la page product.html ===//

@@ -31,6 +31,8 @@ function createArticleHtml(product) {
             '</tr>';
         }
 
+//=== TODO : voir pour un onclik pour delete une ligne de produit
+
 //=== PARTIE DEDIEE A LA VALIDATION DE LA COMMANDE ===//
 document.querySelector("form").addEventListener("submit", function(e) {
   e.preventDefault();
