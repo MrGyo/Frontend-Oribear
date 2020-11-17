@@ -68,6 +68,8 @@ const createArticleHtml = (teddy) => {
             '</div>';
 }
 
+//=== SAUVEGARDE DU PRODUIT DANS LE PANIER DU USER ===//
+
 //=== Ajout d'une fonction qui permet, au clic, de sauvegarder l'article dans le panier via le local storage ===//
 const saveToCart = () => {
     // Création de deux variables permettant de récupérer la valeur concernant les choix "couleur" et "quantité" de l'utilisateur

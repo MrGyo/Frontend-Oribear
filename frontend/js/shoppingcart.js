@@ -45,6 +45,7 @@ document.querySelector("form").addEventListener("submit", function(e) {
   // Initialisation d'un tableau permettant de récupérer les id des teddies dans le local storage
   let products = [];
   let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
+  console.log(cart);
   for (let i = 0; i < cart.length; i++) {
     products.push((cart[i].id))
   }
@@ -67,6 +68,7 @@ document.querySelector("form").addEventListener("submit", function(e) {
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(order)
     }).then(response => {
+        console.log(response)
         return response.json()
     })
     return result;  
