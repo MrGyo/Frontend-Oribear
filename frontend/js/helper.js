@@ -191,6 +191,37 @@ function refreshBadge() {
     badge.innerHTML = refreshBadge;
 }
 
+function addHtmlLikes() {
+  HTMLCollection.prototype.forEach = Array.prototype.forEach;
+  // On déclaire une constante like qui se réfère à notre class like du html
+  const likes = document.getElementsByClassName('like');
+  // Permet de disliker le contenu
+  let countLike = [];
+  // On démarre l'animation au "click"
+  likes.forEach((item, index) => {
+      console.log(item);
+      //-- Init countLike at 0
+      countLike[index] = 0;
+      item.addEventListener('click', () => {
+          console.log("click like:"+index);
+          // Si on arrive sur la page le compteur est = à 0
+          if(countLike[index] === 0) {
+              // On envoie l'animation et on passe le compteur à 1 donc "liker"
+              item.classList.toggle('anim-like');
+              countLike[index] = 1;
+              // Et on part à la fin de l'image
+              item.style.backgroundPosition = 'right';
+              // Puis unlike et on part au début de l'image
+          } else {
+              countLike[index] = 0;
+              item.style.backgroundPosition = 'left';
+          }
+      });
+        item.addEventListener('animationend', () => {
+        item.classList.toggle('anim-like');
+      });
+   });  
+}
 
 
 

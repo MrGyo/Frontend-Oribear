@@ -20,7 +20,9 @@ retrieveContent(url).then(teddies => {
     teddies.forEach(teddy => {
         let container = document.getElementById("articles-container");
         container.innerHTML += createArticleHtml(teddy);
-    })
+    });
+    // Ajout d'une méthode qui permet de liker un produit
+    addHtmlLikes();
 });
 
 //=== Création d'une méthode pour ajouter les fiches produits sur la page index.html ===//
@@ -33,10 +35,23 @@ const createArticleHtml = (teddy) => {
                         '<p class="card-text-1">' + teddy.description + '</p>' +
                         '<p class="card-text-2">Prix: <span style="color:#dd3e89;">' + formatPriceProduct(teddy.price) + '&euro;</span></p>' +
                         '<a href="html/product.html?id='+ teddy._id + '" class="btn btn-secondary btn-select mt-3">Sélectionner</a>' +
+                        '<div class="like mt-4"></div>' +
                     '</div>' + 
                 '</div>' +
             '</div>';
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
