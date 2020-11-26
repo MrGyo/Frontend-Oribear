@@ -3,6 +3,7 @@
 // Déclaration de 3 constantes dédiées au local storage
 const LABEL_VAR_LOCAL_STORAGE = "app_oribear";
 const LABEL_VAR_LOCAL_STORAGE_BADGE = "badge_oribear";
+const LABEL_VAR_LOCAL_STORAGE_FAV_BADGE = "fav_badge_oribear";
 const LABEL_VAR_LOCAL_STORAGE_ORDER = "order_oribear";
 
 // Sauvegarde dans le local storage l'id donnée
@@ -191,20 +192,25 @@ function refreshBadge() {
     badge.innerHTML = refreshBadge;
 }
 
+//=== FONCTION POUR LE REFRESH DES FAVS ===//
+
+//=== FONCTION ANIMATION DES FAVS ===//
+
 function addHtmlLikes() {
+  // On attribue la méthode forEach à l'array de la collection HTML
   HTMLCollection.prototype.forEach = Array.prototype.forEach;
   // On déclaire une constante like qui se réfère à notre class like du html
   const likes = document.getElementsByClassName('like');
   // Permet de disliker le contenu
   let countLike = [];
-  // On démarre l'animation au "click"
+  // On démarre l'animation au "click", on passe en argument l'item (le produit) et l'index (référence à l'array relatif aux fiches produits)
   likes.forEach((item, index) => {
       console.log(item);
-      //-- Init countLike at 0
+      //-- Init countLike at 0, aucun click pour chaque item de l'array
       countLike[index] = 0;
       item.addEventListener('click', () => {
-          console.log("click like:"+index);
-          // Si on arrive sur la page le compteur est = à 0
+          console.log("click like: " + index);
+          // Si on arrive sur la page le compteur est = à 0,  quand on like le premier produit de l'array on retrouve le produit qui est à l'index 0 du tableau
           if(countLike[index] === 0) {
               // On envoie l'animation et on passe le compteur à 1 donc "liker"
               item.classList.toggle('anim-like');
@@ -222,6 +228,26 @@ function addHtmlLikes() {
       });
    });  
 }
+
+
+/*function updateFavBadge() {
+  let heart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE_FAV_BADGE);
+  let quantities = 0;
+  for (let product of heart) {
+      quantities += parseInt(product.quantity)
+  }
+  localStorage.setItem(LABEL_VAR_LOCAL_STORAGE_FAV_BADGE, quantities);
+}
+
+function refreshFavBadge() {
+  let refreshFavBadge = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE_FAV_BADGE);
+  let favBadge = document.getElementById("fav-badge");
+  favBadge.innerHTML = refreshFavBadge;
+}*/
+
+
+
+
 
 
 

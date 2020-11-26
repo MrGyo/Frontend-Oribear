@@ -421,6 +421,11 @@ footer {
   .copyright {
     font-size: 1.2em;
   }
+
+  .like {
+    top: 13%;
+    left: 92%;
+  }
   
   
 }
