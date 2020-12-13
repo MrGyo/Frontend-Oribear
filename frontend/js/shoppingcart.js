@@ -46,9 +46,13 @@ document.querySelector("form").addEventListener("submit", function(e) {
   let products = [];
   let cart = loadLocalStorage(LABEL_VAR_LOCAL_STORAGE);
   console.log(cart);
-  for (let i = 0; i < cart.length; i++) {
+  /*for (let i = 0; i < cart.length; i++) {
+    products.push((cart[i].id))
+  }*/
+  for (let i in cart) {
     products.push((cart[i].id))
   }
+  console.log(products)
   // Envoi de l'order à l'api et redirection vers la page de confirmation
   let url = 'http://localhost:3000/api/teddies/order';
   let order = {
