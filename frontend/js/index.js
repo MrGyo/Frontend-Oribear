@@ -35,7 +35,7 @@ const createArticleHtml = (teddy) => {
                         '<p class="card-text-1">' + teddy.description + '</p>' +
                         '<p class="card-text-2">Prix: <span style="color:#dd3e89;">' + formatPriceProduct(teddy.price) + '&euro;</span></p>' +
                         '<a href="html/product.html?id='+ teddy._id + '" class="btn btn-secondary btn-select mt-3">Sélectionner</a>' +
-                        '<div class="like mt-4" title="Ajouter aux favoris"></div>' +
+                        /*'<div class="like mt-4" title="Ajouter aux favoris"></div>' +*/
                     '</div>' + 
                 '</div>' +
             '</div>';

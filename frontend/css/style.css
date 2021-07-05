@@ -263,32 +263,27 @@ footer {
 }
 
 /* ANIMATION LIKE */
-.like {
+/*.like {
   cursor: pointer;
   height: 100px;
   width: 100px;
-  /* on prend directement le fichier sprite via l'url */
   background-image: url(https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png);
-  /* Position absolute du like par rapport au parent qui est en position relative */
   position: absolute;
   top: 100%;
   left: 92%;
-  /* sur x et y -50% de la largeur du parent et -50% de la hauteur du parent */
   transform: translate(-50%, -110%);
-}
+}*/
 
 /* création de l'animation CSS pour la faire bouger dans le background */
-.anim-like {
+/*.anim-like {
   animation-name: anim-like;
   animation-duration: 0.8s;
-  /* décomposition des images étape par étape dans l'animation (28 images)*/
   animation-timing-function: steps(28); 
 }
 @keyframes anim-like {
-  /* keyframes indiquant que l'animation commence à l'image de gauche pour finir à la droite : c'est liker ! */
   from{background-position: left;}
   to{background-position: right;}
-}
+}*/
 
 /* PERSONNALISATION DES BOUTONS SWALFIRE */
 
